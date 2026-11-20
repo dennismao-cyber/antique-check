@@ -398,7 +398,85 @@ button {
   .screen { padding: 18px 14px 22px; }
 }
 
-.screen-home .hero { padding-top: 4vh; }
+.screen-home .hero { padding-top: 0; }
+
+.home-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 84px;
+  gap: 8px;
+  align-items: start;
+  margin-bottom: 12px;
+}
+
+.screen-home .title {
+  font-size: 46px;
+  letter-spacing: 0.08em;
+}
+
+.screen-home .seal {
+  width: 52px;
+  height: 52px;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.screen-home .premise {
+  max-width: none;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.rank-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rank-fig {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.4;
+}
+
+.rank-fig img {
+  width: 48px;
+  height: 58px;
+  object-fit: contain;
+}
+
+.rank-fig figcaption {
+  margin: 0;
+  max-width: 84px;
+  font-size: 10px;
+  line-height: 1.25;
+  text-align: center;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
+.rank-fig.is-current {
+  opacity: 1;
+}
+
+.rank-fig.is-current img {
+  width: 58px;
+  height: 70px;
+}
+
+.rank-fig.is-current figcaption {
+  color: var(--cinnabar);
+  font-family: var(--serif);
+  font-size: 11px;
+}
+
+.chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: rgba(255, 252, 247, 0.72);
+}
 
 .rank-chip {
   display: inline-block;

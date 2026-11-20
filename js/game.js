@@ -147,17 +147,40 @@
     return QUESTIONS.find(function (q) { return q.id === id; });
   }
 
+  const RANK_FACES = [
+    { file: "images/ranks/xuetu.svg", short: "学徒" },
+    { file: "images/ranks/chuji.svg", short: "初级" },
+    { file: "images/ranks/zhongji.svg", short: "中级" },
+    { file: "images/ranks/gaoji.svg", short: "高级" },
+  ];
+
   function showHome() {
     const person = profile();
     const rank = rankOf(person);
     const stat = statOf(person);
     clearApp();
     const screen = el("section", "screen screen-home");
+    const head = el("div", "home-head");
     const hero = el("div", "hero");
     hero.appendChild(el("div", "seal", "鉴"));
     hero.appendChild(el("p", "rank-chip", rank.name));
     hero.appendChild(el("h1", "title", "鉴瓷"));
     hero.appendChild(el("p", "premise", "这一级先看" + rank.focus + "。"));
+    head.appendChild(hero);
+    const rail = el("aside", "rank-rail");
+    rail.setAttribute("aria-label", "我现在是" + rank.name);
+    RANK_FACES.forEach(function (face, i) {
+      const current = i === person.rankIndex;
+      const fig = el("figure", "rank-fig" + (current ? " is-current" : ""));
+      const img = document.createElement("img");
+      img.src = face.file;
+      img.alt = current ? "我现在是" + RANKS[i].name : RANKS[i].name;
+      fig.appendChild(img);
+      fig.appendChild(el("figcaption", null, current ? "我现在是" + RANKS[i].name : face.short));
+      rail.appendChild(fig);
+    });
+    head.appendChild(rail);
+    screen.appendChild(head);
     const block = el("div", "progress-block");
     const accText = stat.attempts ? Math.round(accuracy(stat) * 100) + "%" : "还没开题";
     block.appendChild(el("p", "progress-line", "答对 " + stat.correct + " / " + NEED_CORRECT));
@@ -168,8 +191,7 @@
     block.appendChild(bar);
     block.appendChild(el("p", "progress-line", "正确率 " + accText + " · 目标 70%"));
     block.appendChild(el("p", "fine", stillNeed(stat) + "。作答 " + stat.attempts + " 题。"));
-    hero.appendChild(block);
-    screen.appendChild(hero);
+    screen.appendChild(block);
 
     const menu = el("div", "menu");
     const start = el("button", "primary", "开始鉴定");
@@ -696,7 +718,7 @@
         body.appendChild(el("p", "fine", "已去掉异常值 " + (marked.length - used.length) + " 条。权重每五年大约减半。"));
       }
       body.appendChild(buildChart(marked));
-      body.appendChild(el("p", "fine", "纵轴做过压缩，免得大件把小件挤在底上。红点是异常值。"));
+      body.appendChild(el("p", "fine", "横轴是年份，纵轴是人民币。红点是异常值，不计入均价。"));
       const list = el("ul", "lot-list");
       marked.slice().sort(function (a, b) { return a.lot.date < b.lot.date ? 1 : -1; }).forEach(function (row) {
         const li = document.createElement("li");
@@ -718,28 +740,122 @@
     app.appendChild(screen);
   }
 
+  function niceCeil(value) {
+    if (value <= 0) return 1;
+    const exp = Math.pow(10, Math.floor(Math.log10(value)));
+    const n = value / exp;
+    const nice = n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10;
+    return nice * exp;
+  }
+
+  function yuanTick(n) {
+    if (n <= 0) return "0";
+    if (n >= 10000) {
+      const wan = n / 10000;
+      const text = wan >= 10 ? String(Math.round(wan)) : String(Math.round(wan * 10) / 10);
+      return text.replace(/\.0$/, "") + "万";
+    }
+    return String(Math.round(n));
+  }
+
+  function svgEl(name, attrs) {
+    const node = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.keys(attrs).forEach(function (key) { node.setAttribute(key, attrs[key]); });
+    return node;
+  }
+
   function buildChart(rows) {
-    const width = 320;
-    const height = 160;
-    const pad = 16;
-    const years = rows.map(function (row) { return new Date(row.lot.date).getFullYear(); });
-    const minY = Math.min.apply(null, years.concat([2016]));
-    const maxY = Math.max.apply(null, years.concat([2026]));
-    const maxP = Math.max.apply(null, rows.map(function (row) { return row.lot.cny; }));
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("viewBox", "0 0 " + width + " " + height);
-    svg.setAttribute("class", "chart");
-    svg.setAttribute("role", "img");
-    svg.setAttribute("aria-label", "近十年成交散点");
+    const width = 360;
+    const height = 236;
+    const left = 44;
+    const right = 12;
+    const top = 16;
+    const bottom = 32;
+    const plotW = width - left - right;
+    const plotH = height - top - bottom;
+    const minYear = 2016;
+    const maxYear = 2026;
+    const yMax = niceCeil(Math.max.apply(null, rows.map(function (row) { return row.lot.cny; })) * 1.06);
+    const byDate = {};
     rows.forEach(function (row) {
-      const year = new Date(row.lot.date).getFullYear();
-      const x = pad + ((year - minY) / Math.max(1, maxY - minY)) * (width - pad * 2);
-      const y = height - pad - Math.sqrt(row.lot.cny / maxP) * (height - pad * 2);
-      const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      dot.setAttribute("cx", x.toFixed(1));
-      dot.setAttribute("cy", y.toFixed(1));
-      dot.setAttribute("r", row.outlier ? "5" : "4");
-      dot.setAttribute("fill", row.outlier ? "#8d3b32" : "#2c6a4f");
+      if (!byDate[row.lot.date]) byDate[row.lot.date] = [];
+      byDate[row.lot.date].push(row);
+    });
+    const slot = {};
+    Object.keys(byDate).forEach(function (date) {
+      byDate[date].forEach(function (row, i) {
+        slot[date + "|" + row.lot.lot + "|" + row.lot.house] = { i: i, n: byDate[date].length };
+      });
+    });
+
+    function xOf(row) {
+      const d = new Date(row.lot.date + "T00:00:00Z");
+      const year = d.getUTCFullYear() + (d.getUTCMonth() + d.getUTCDate() / 31) / 12;
+      let x = left + ((year - minYear) / (maxYear - minYear)) * plotW;
+      const place = slot[row.lot.date + "|" + row.lot.lot + "|" + row.lot.house];
+      if (place && place.n > 1) {
+        const gap = 12;
+        x += (place.i - (place.n - 1) / 2) * gap;
+      }
+      return x;
+    }
+    function yOf(cny) {
+      return top + (1 - cny / yMax) * plotH;
+    }
+
+    const svg = svgEl("svg", {
+      viewBox: "0 0 " + width + " " + height,
+      class: "chart",
+      role: "img",
+      "aria-label": "横轴年份，纵轴人民币成交价",
+    });
+    for (let t = 0; t <= 4; t += 1) {
+      const value = yMax * t / 4;
+      const y = yOf(value);
+      svg.appendChild(svgEl("line", {
+        x1: left, x2: width - right, y1: y.toFixed(1), y2: y.toFixed(1),
+        stroke: "rgba(36,28,20,0.12)", "stroke-width": "1",
+      }));
+      const label = svgEl("text", {
+        x: left - 6, y: (y + 3).toFixed(1), "text-anchor": "end",
+        fill: "#6f665c", "font-size": "10", "font-family": "Noto Sans SC, sans-serif",
+      });
+      label.textContent = yuanTick(value);
+      svg.appendChild(label);
+    }
+    for (let year = minYear; year <= maxYear; year += 2) {
+      const x = left + ((year - minYear) / (maxYear - minYear)) * plotW;
+      svg.appendChild(svgEl("line", {
+        x1: x.toFixed(1), x2: x.toFixed(1), y1: top, y2: top + plotH,
+        stroke: "rgba(36,28,20,0.08)", "stroke-width": "1",
+      }));
+      const label = svgEl("text", {
+        x: x.toFixed(1), y: height - 10, "text-anchor": "middle",
+        fill: "#6f665c", "font-size": "10", "font-family": "Noto Sans SC, sans-serif",
+      });
+      label.textContent = String(year);
+      svg.appendChild(label);
+    }
+    svg.appendChild(svgEl("line", {
+      x1: left, x2: left, y1: top, y2: top + plotH,
+      stroke: "#241c14", "stroke-width": "1.2",
+    }));
+    svg.appendChild(svgEl("line", {
+      x1: left, x2: width - right, y1: top + plotH, y2: top + plotH,
+      stroke: "#241c14", "stroke-width": "1.2",
+    }));
+    rows.forEach(function (row) {
+      const dot = svgEl("circle", {
+        cx: xOf(row).toFixed(1),
+        cy: yOf(row.lot.cny).toFixed(1),
+        r: "5",
+        fill: row.outlier ? "#8d3b32" : "#2c6a4f",
+        stroke: "#f4efe6",
+        "stroke-width": "1.5",
+      });
+      const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+      title.textContent = row.lot.date + " " + row.lot.title + " " + row.lot.cny + "元";
+      dot.appendChild(title);
       svg.appendChild(dot);
     });
     return svg;
