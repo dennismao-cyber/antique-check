@@ -906,7 +906,7 @@
         body.appendChild(el("p", "fine", "已去掉异常值 " + (marked.length - used.length) + " 条。权重每五年大约减半。"));
       }
       body.appendChild(buildChart(marked));
-      body.appendChild(el("p", "fine", "横轴是年份，纵轴是人民币。红点是异常值，不计入均价。"));
+      body.appendChild(el("p", "fine", "横轴是年份，纵轴是人民币。绿线按时间连上计入均价的成交。红点是异常值，不计入均价，也不在连线上。"));
       const list = el("ul", "lot-list");
       marked.slice().sort(function (a, b) { return a.lot.date < b.lot.date ? 1 : -1; }).forEach(function (row) {
         const li = document.createElement("li");
@@ -995,7 +995,7 @@
       viewBox: "0 0 " + width + " " + height,
       class: "chart",
       role: "img",
-      "aria-label": "横轴年份，纵轴人民币成交价",
+      "aria-label": "横轴年份，纵轴人民币。绿线连接计入均价的成交",
     });
     for (let t = 0; t <= 4; t += 1) {
       const value = yMax * t / 4;
@@ -1032,6 +1032,25 @@
       x1: left, x2: width - right, y1: top + plotH, y2: top + plotH,
       stroke: "#241c14", "stroke-width": "1.2",
     }));
+    const included = rows.filter(function (row) { return !row.outlier; });
+    included.sort(function (a, b) {
+      if (a.lot.date !== b.lot.date) return a.lot.date < b.lot.date ? -1 : 1;
+      const sa = slot[a.lot.date + "|" + a.lot.lot + "|" + a.lot.house];
+      const sb = slot[b.lot.date + "|" + b.lot.lot + "|" + b.lot.house];
+      return (sa ? sa.i : 0) - (sb ? sb.i : 0);
+    });
+    if (included.length >= 2) {
+      svg.appendChild(svgEl("polyline", {
+        points: included.map(function (row) {
+          return xOf(row).toFixed(1) + "," + yOf(row.lot.cny).toFixed(1);
+        }).join(" "),
+        fill: "none",
+        stroke: "#2c6a4f",
+        "stroke-width": "2",
+        "stroke-linejoin": "round",
+        "stroke-linecap": "round",
+      }));
+    }
     rows.forEach(function (row) {
       const dot = svgEl("circle", {
         cx: xOf(row).toFixed(1),
