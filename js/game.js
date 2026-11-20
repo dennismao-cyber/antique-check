@@ -143,8 +143,49 @@
     return JSON.parse(new TextDecoder().decode(bytes));
   }
 
+  const RANK_SRC = {
+    "学徒": "js/bank/xuetu.js",
+    "初级鉴定师": "js/bank/chuji.js",
+    "中级鉴定师": "js/bank/zhongji.js",
+    "高级鉴定师": "js/bank/gaoji.js",
+  };
+
+  function loadRank(name) {
+    if (window.BANK_PARTS && window.BANK_PARTS[name]) {
+      return Promise.resolve(window.BANK_PARTS[name]);
+    }
+    return new Promise(function (resolve, reject) {
+      const script = document.createElement("script");
+      script.src = RANK_SRC[name];
+      script.onload = function () {
+        resolve((window.BANK_PARTS && window.BANK_PARTS[name]) || []);
+      };
+      script.onerror = function () { reject(new Error(name)); };
+      document.head.appendChild(script);
+    });
+  }
+
+  function loadAllRanks() {
+    return Promise.all(Object.keys(RANK_SRC).map(loadRank));
+  }
+
+  function ranksReady() {
+    return Object.keys(RANK_SRC).every(function (name) {
+      return window.BANK_PARTS && window.BANK_PARTS[name];
+    });
+  }
+
+  function allQuestions() {
+    const out = [];
+    Object.keys(RANK_SRC).forEach(function (name) {
+      const part = window.BANK_PARTS && window.BANK_PARTS[name];
+      if (part) out.push.apply(out, part);
+    });
+    return out;
+  }
+
   function questionById(id) {
-    return QUESTIONS.find(function (q) { return q.id === id; });
+    return allQuestions().find(function (q) { return q.id === id; }) || null;
   }
 
   const RANK_FACES = [
@@ -230,27 +271,38 @@
   }
 
   function poolFor(rank) {
-    return QUESTIONS.filter(function (q) { return q.rank === rank.name; });
+    return allQuestions().filter(function (q) { return q.rank === rank.name; });
   }
 
   function startRound() {
     const person = profile();
     sessionRank = person.rankIndex;
     const rank = RANKS[sessionRank];
-    const pool = poolFor(rank);
-    round = shuffle(pool).slice(0, Math.min(10, pool.length));
-    index = 0;
-    locked = false;
-    sessionHits = 0;
-    if (!round.length) {
+    clearApp();
+    const waiting = el("section", "screen");
+    waiting.appendChild(el("p", "fine", "正在准备这一级的题……"));
+    app.appendChild(waiting);
+    loadRank(rank.name).then(function (pool) {
+      round = shuffle(pool).slice(0, Math.min(10, pool.length));
+      index = 0;
+      locked = false;
+      sessionHits = 0;
+      if (!round.length) {
+        clearApp();
+        const screen = el("section", "screen");
+        screen.appendChild(backButton());
+        screen.appendChild(el("h2", "prompt", "这一级暂时没有题。"));
+        app.appendChild(screen);
+        return;
+      }
+      showQuestion();
+    }).catch(function () {
       clearApp();
       const screen = el("section", "screen");
       screen.appendChild(backButton());
-      screen.appendChild(el("h2", "prompt", "这一级暂时没有题。"));
+      screen.appendChild(el("p", "note", "题库没有打开。"));
       app.appendChild(screen);
-      return;
-    }
-    showQuestion();
+    });
   }
 
   function showQuestion() {
@@ -274,6 +326,10 @@
 
     const views = (typeof VIEWS !== "undefined" && VIEWS[q.accession]) || [{ src: q.image, kind: "main", label: "全器" }];
     let viewIndex = 0;
+    if (q.axis === "mark" || q.axis === "foot" || q.axis === "auth") {
+      const footAt = views.findIndex(function (view) { return view.kind === "foot"; });
+      if (footAt >= 0) viewIndex = footAt;
+    }
     const frame = el("figure", "frame");
     const photo = el("div", "photo");
     const img = document.createElement("img");
@@ -289,7 +345,7 @@
         btn.classList.toggle("is-on", n === i);
       });
     }
-    img.src = views[0].src;
+    img.src = views[viewIndex].src;
     if (img.complete && img.naturalWidth > 0) ready();
     photo.appendChild(img);
     photo.addEventListener("click", function () { openZoom(views[viewIndex].src); });
@@ -302,7 +358,7 @@
         otherCount += 1;
         label = "其他" + otherCount;
       }
-      const btn = el("button", "view-btn" + (i === 0 ? " is-on" : ""), label);
+      const btn = el("button", "view-btn" + (i === viewIndex ? " is-on" : ""), label);
       btn.type = "button";
       btn.addEventListener("click", function (event) {
         event.stopPropagation();
@@ -321,10 +377,10 @@
     link.href = q.source;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
-    link.textContent = q.credit + " " + q.accession;
+    link.textContent = q.credit + (q.license ? " · " + q.license : "") + " " + q.accession;
     cap.appendChild(link);
     frame.appendChild(cap);
-    frame.appendChild(marketChip(q.accession));
+    frame.appendChild(marketChip(q.accession, q.market));
     screen.appendChild(frame);
 
     screen.appendChild(el("h2", "prompt", q.prompt));
@@ -541,6 +597,17 @@
   }
 
   function showAtlas() {
+    if (!ranksReady()) {
+      clearApp();
+      const waiting = el("section", "screen");
+      waiting.appendChild(el("p", "fine", "正在准备图鉴……"));
+      app.appendChild(waiting);
+      loadAllRanks().then(showAtlas).catch(function () {
+        clearApp();
+        app.appendChild(el("p", "note", "题库没有打开。"));
+      });
+      return;
+    }
     const person = profile();
     let filter = "全部";
     clearApp();
@@ -586,7 +653,7 @@
           detail.replaceChildren();
           detail.appendChild(el("h3", "prompt", q.prompt));
           detail.appendChild(el("p", "note", q.note));
-          detail.appendChild(marketChip(q.accession));
+          detail.appendChild(marketChip(q.accession, q.market));
           const link = document.createElement("a");
           link.href = q.source;
           link.target = "_blank";
@@ -616,6 +683,17 @@
   }
 
   function showMentor() {
+    if (!ranksReady()) {
+      clearApp();
+      const waiting = el("section", "screen");
+      waiting.appendChild(el("p", "fine", "正在准备……"));
+      app.appendChild(waiting);
+      loadAllRanks().then(showMentor).catch(function () {
+        clearApp();
+        app.appendChild(el("p", "note", "题库没有打开。"));
+      });
+      return;
+    }
     const person = profile();
     clearApp();
     const screen = el("section", "screen");
@@ -787,7 +865,7 @@
   }
 
   function varietyIdFor(accession) {
-    const answers = QUESTIONS.filter(function (item) { return item.accession === accession; }).map(function (item) { return item.answer; });
+    const answers = allQuestions().filter(function (item) { return item.accession === accession; }).map(function (item) { return item.answer; });
     if (answers.indexOf("粉彩") >= 0) return "fencai";
     if (answers.indexOf("青花") >= 0) return "qinghua";
     if (answers.join(" ").indexOf("仿汝") >= 0) return "ru-type";
@@ -814,8 +892,8 @@
     return { id: variety.id, name: variety.name, thin: false, avg: Math.round(sum / wsum) };
   }
 
-  function marketChip(accession) {
-    const id = varietyIdFor(accession);
+  function marketChip(accession, preset) {
+    const id = preset || varietyIdFor(accession);
     const info = summarizeVariety(id);
     const button = el("button", "market-chip");
     button.type = "button";
