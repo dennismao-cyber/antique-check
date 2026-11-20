@@ -214,7 +214,18 @@
       save();
     });
     screen.appendChild(name);
-    screen.appendChild(el("p", "fine", "等级记在这台设备上。十题一局。"));
+    const skip = el("label", "skip-toggle");
+    const box = document.createElement("input");
+    box.type = "checkbox";
+    box.checked = !!person.skipCorrectPopup;
+    box.addEventListener("change", function () {
+      person.skipCorrectPopup = box.checked;
+      save();
+    });
+    skip.appendChild(box);
+    skip.appendChild(document.createTextNode(" 答对不弹框"));
+    screen.appendChild(skip);
+    screen.appendChild(el("p", "fine", "等级记在这台设备上。十题一局。答错仍会说明。"));
     app.appendChild(screen);
   }
 
@@ -261,16 +272,49 @@
     screen.appendChild(head);
     screen.appendChild(el("p", "fine", rankOf(person).name + " · " + rankOf(person).focus));
 
+    const views = (typeof VIEWS !== "undefined" && VIEWS[q.accession]) || [{ src: q.image, kind: "main", label: "全器" }];
+    let viewIndex = 0;
     const frame = el("figure", "frame");
     const photo = el("div", "photo");
     const img = document.createElement("img");
     img.alt = q.name;
     function ready() { photo.classList.add("is-ready"); }
     img.addEventListener("load", ready);
-    img.src = q.image;
+    function showView(i) {
+      viewIndex = i;
+      photo.classList.remove("is-ready");
+      img.src = views[i].src;
+      if (img.complete && img.naturalWidth > 0) ready();
+      frame.querySelectorAll(".view-btn").forEach(function (btn, n) {
+        btn.classList.toggle("is-on", n === i);
+      });
+    }
+    img.src = views[0].src;
     if (img.complete && img.naturalWidth > 0) ready();
     photo.appendChild(img);
+    photo.addEventListener("click", function () { openZoom(views[viewIndex].src); });
     frame.appendChild(photo);
+    const viewBar = el("div", "view-bar");
+    let otherCount = 0;
+    views.forEach(function (view, i) {
+      let label = view.label;
+      if (view.kind === "other") {
+        otherCount += 1;
+        label = "其他" + otherCount;
+      }
+      const btn = el("button", "view-btn" + (i === 0 ? " is-on" : ""), label);
+      btn.type = "button";
+      btn.addEventListener("click", function (event) {
+        event.stopPropagation();
+        showView(i);
+      });
+      viewBar.appendChild(btn);
+    });
+    frame.appendChild(viewBar);
+    if (!views.some(function (view) { return view.kind === "foot"; })) {
+      frame.appendChild(el("p", "fine view-note", "暂无单独确认的底足照片"));
+    }
+    frame.appendChild(el("p", "fine view-note", "点照片可放大"));
     const cap = el("figcaption", "credit");
     cap.appendChild(el("span", "obj-name", q.name));
     const link = document.createElement("a");
@@ -280,6 +324,7 @@
     link.textContent = q.credit + " " + q.accession;
     cap.appendChild(link);
     frame.appendChild(cap);
+    frame.appendChild(marketChip(q.accession));
     screen.appendChild(frame);
 
     screen.appendChild(el("h2", "prompt", q.prompt));
@@ -337,20 +382,24 @@
       } else btn.classList.add("is-idle");
     });
     const feedback = app.querySelector(".feedback");
-    feedback.hidden = false;
-    feedback.classList.add(ok ? "is-right" : "is-miss");
-    feedback.querySelector(".note").textContent = (ok ? "看对了。" : "应是「" + q.answer + "」。") + q.note;
-    if (!ok) openTeach(q);
-    else feedback.querySelector(".next").scrollIntoView({ block: "nearest" });
+    const skipPopup = ok && person.skipCorrectPopup;
+    if (skipPopup) {
+      feedback.hidden = false;
+      feedback.classList.add("is-right");
+      feedback.querySelector(".note").textContent = "看对了。";
+      feedback.querySelector(".next").scrollIntoView({ block: "nearest" });
+      return;
+    }
+    openResult(q, ok);
   }
 
-  function openTeach(q) {
+  function openResult(q, ok) {
     const person = profile();
     const back = el("div", "modal-back");
     const modal = el("div", "modal");
-    modal.appendChild(el("p", "eyebrow", "知识点"));
-    modal.appendChild(el("h3", null, AXIS_LABEL[q.axis] + " · " + q.answer));
-    if (person.mentor) {
+    modal.appendChild(el("p", "eyebrow", ok ? "答对了" : "答错了"));
+    modal.appendChild(el("h3", null, (ok ? "正是「" : "应是「") + q.answer + "」"));
+    if (!ok && person.mentor) {
       const who = person.mentor.preview ? "预演师父" : "师父";
       modal.appendChild(el("p", "teacher-line", who + " " + person.mentor.name + " 点拨"));
       const custom = person.teacherNotes[q.id];
@@ -358,14 +407,85 @@
     }
     modal.appendChild(el("p", "note", q.note));
     modal.appendChild(el("p", "fine", q.credit + " " + q.accession + " · 已收入图鉴"));
-    const close = el("button", "primary", "知道了");
+    const skip = el("label", "skip-toggle");
+    const box = document.createElement("input");
+    box.type = "checkbox";
+    box.checked = !!person.skipCorrectPopup;
+    box.addEventListener("change", function () {
+      person.skipCorrectPopup = box.checked;
+      save();
+    });
+    skip.appendChild(box);
+    skip.appendChild(document.createTextNode(" 答对不弹框"));
+    modal.appendChild(skip);
+    const next = el("button", "primary", index === round.length - 1 ? "看这一局" : "下一题");
+    next.type = "button";
+    next.addEventListener("click", function () {
+      back.remove();
+      advance();
+    });
+    modal.appendChild(next);
+    back.appendChild(modal);
+    document.body.appendChild(back);
+  }
+
+  function openZoom(src) {
+    const back = el("div", "zoom-back");
+    const stage = el("div", "zoom-stage");
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "放大看";
+    stage.appendChild(img);
+    const close = el("button", "zoom-close", "关闭");
     close.type = "button";
     close.addEventListener("click", function () { back.remove(); });
-    modal.appendChild(close);
-    back.addEventListener("click", function (event) {
-      if (event.target === back) back.remove();
+    let scale = 1;
+    let x = 0;
+    let y = 0;
+    let start = null;
+    function paint() {
+      img.style.transform = "translate(" + x + "px," + y + "px) scale(" + scale + ")";
+    }
+    stage.addEventListener("wheel", function (event) {
+      event.preventDefault();
+      scale = Math.min(5, Math.max(1, scale + (event.deltaY < 0 ? 0.2 : -0.2)));
+      if (scale === 1) { x = 0; y = 0; }
+      paint();
+    }, { passive: false });
+    stage.addEventListener("touchstart", function (event) {
+      if (event.touches.length === 2) {
+        const a = event.touches[0];
+        const b = event.touches[1];
+        start = { dist: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY), scale: scale, x: x, y: y };
+      } else if (event.touches.length === 1 && scale > 1) {
+        start = { px: event.touches[0].clientX, py: event.touches[0].clientY, x: x, y: y };
+      }
+    }, { passive: true });
+    stage.addEventListener("touchmove", function (event) {
+      if (!start) return;
+      if (event.touches.length === 2 && start.dist) {
+        event.preventDefault();
+        const a = event.touches[0];
+        const b = event.touches[1];
+        const dist = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+        scale = Math.min(5, Math.max(1, start.scale * dist / start.dist));
+        paint();
+      } else if (event.touches.length === 1 && start.px != null) {
+        event.preventDefault();
+        x = start.x + event.touches[0].clientX - start.px;
+        y = start.y + event.touches[0].clientY - start.py;
+        paint();
+      }
+    }, { passive: false });
+    stage.addEventListener("touchend", function () { start = null; });
+    stage.addEventListener("dblclick", function () {
+      scale = scale > 1 ? 1 : 2.4;
+      if (scale === 1) { x = 0; y = 0; }
+      paint();
     });
-    back.appendChild(modal);
+    back.appendChild(close);
+    back.appendChild(stage);
+    back.appendChild(el("p", "fine zoom-hint", "双指缩放，双击也能放大"));
     document.body.appendChild(back);
   }
 
@@ -466,6 +586,7 @@
           detail.replaceChildren();
           detail.appendChild(el("h3", "prompt", q.prompt));
           detail.appendChild(el("p", "note", q.note));
+          detail.appendChild(marketChip(q.accession));
           const link = document.createElement("a");
           link.href = q.source;
           link.target = "_blank";
@@ -665,17 +786,84 @@
     return Math.pow(0.5, years / 5);
   }
 
-  function showMarket() {
+  function varietyIdFor(accession) {
+    const answers = QUESTIONS.filter(function (item) { return item.accession === accession; }).map(function (item) { return item.answer; });
+    if (answers.indexOf("粉彩") >= 0) return "fencai";
+    if (answers.indexOf("青花") >= 0) return "qinghua";
+    if (answers.join(" ").indexOf("仿汝") >= 0) return "ru-type";
+    return "";
+  }
+
+  function summarizeVariety(id) {
+    const variety = MARKET.varieties.filter(function (item) { return item.id === id; })[0];
+    if (!variety) return { id: "", name: "", thin: true, avg: null };
+    const prices = variety.lots.map(function (lot) { return lot.cny; });
+    const mid = median(prices);
+    const used = variety.lots.filter(function (lot) {
+      return !(mid > 0 && (lot.cny > mid * 3 || lot.cny < mid / 3));
+    });
+    const thin = variety.lots.length < 4 || used.length < 2;
+    if (thin) return { id: variety.id, name: variety.name, thin: true, avg: null };
+    let sum = 0;
+    let wsum = 0;
+    used.forEach(function (lot) {
+      const weight = weigh(lot);
+      sum += lot.cny * weight;
+      wsum += weight;
+    });
+    return { id: variety.id, name: variety.name, thin: false, avg: Math.round(sum / wsum) };
+  }
+
+  function marketChip(accession) {
+    const id = varietyIdFor(accession);
+    const info = summarizeVariety(id);
+    const button = el("button", "market-chip");
+    button.type = "button";
+    if (!id || info.thin) {
+      button.textContent = "市场参考 · " + (info.name ? info.name + " · " : "") + "样本不足";
+    } else {
+      button.textContent = "市场参考 · " + info.name + " · 约 " + info.avg.toLocaleString("zh-CN") + " 元";
+    }
+    button.addEventListener("click", function (event) {
+      event.stopPropagation();
+      openMarketOverlay(id);
+    });
+    return button;
+  }
+
+  function openMarketOverlay(startId) {
+    const overlay = el("div", "sheet market-overlay");
+    document.body.appendChild(overlay);
+    showMarket(startId, overlay);
+  }
+
+  function showMarket(startId, host) {
     let current = 0;
-    clearApp();
+    if (startId) {
+      MARKET.varieties.forEach(function (item, i) {
+        if (item.id === startId) current = i;
+      });
+    }
+    const embedded = !!host;
+    if (!embedded) {
+      clearApp();
+      host = app;
+    }
     const screen = el("section", "screen");
-    screen.appendChild(backButton());
+    if (embedded) {
+      const back = el("button", "back", "返回答题");
+      back.type = "button";
+      back.addEventListener("click", function () { host.remove(); });
+      screen.appendChild(back);
+    } else {
+      screen.appendChild(backButton());
+    }
     screen.appendChild(el("h2", "prompt", "市场指导估价"));
     screen.appendChild(el("p", "disclaimer", "仅供参考，不构成价值评定或投资建议。"));
     const filters = el("div", "filters");
     const body = el("div");
     MARKET.varieties.forEach(function (variety, i) {
-      const chip = el("button", "chip" + (i === 0 ? " is-on" : ""), variety.name);
+      const chip = el("button", "chip" + (i === current ? " is-on" : ""), variety.name);
       chip.type = "button";
       chip.addEventListener("click", function () {
         current = i;
@@ -737,7 +925,7 @@
     screen.appendChild(el("p", "note", "算法：以 2026年11月20日 为基准，权重是 0.5 的（距今年数 ÷ 5）次方。价格用拍卖行公布的含佣金成交价，流拍不收。超过同品种中位数三倍，或不到三分之一，标为异常值，不计入均价。" + MARKET.fxNote));
     screen.appendChild(el("p", "fine", MARKET.coverage));
     screen.appendChild(el("p", "fine", "汇率来源：" + MARKET.fxSource + "。"));
-    app.appendChild(screen);
+    host.appendChild(screen);
   }
 
   function niceCeil(value) {
