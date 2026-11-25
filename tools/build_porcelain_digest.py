@@ -24,6 +24,7 @@ import json
 import re
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from io import BytesIO
@@ -357,6 +358,9 @@ def save_jpeg(blob: bytes, dest: Path, max_edge: int = 720) -> None:
 
 
 def download_image(url: str, dest: Path, referer: str | None = None) -> str | None:
+    # Keep complete local thumbs across daily rebuilds.
+    if dest.exists() and dest.stat().st_size >= 800:
+        return None
     try:
         blob = request(url, timeout=40, referer=referer)
     except Exception as exc:  # noqa: BLE001 - recorded for the digest notes
@@ -577,6 +581,7 @@ def build(xlsx: Path, date: str, fetch: bool) -> dict:
             "苏富比巴黎 Asian Art / 5000 Years、佳士得 Blaquier-Arrieta、Koller 的开拍时刻，表格里标了待核实。",
             "刚结束的场次只作对照，不用于跟拍。",
             "这是跟拍备忘，不构成价值评定或投资建议。",
+            "页面图片来自各拍卖行公开图录，仅供跟拍备忘，不是本站原创。",
         ],
         "fetchNotes": notes,
         "houses": houses,
@@ -677,6 +682,7 @@ def enrich(sales: list[dict], image_dir: Path, notes: list[str]) -> None:
 
     attach_christies(sales, christies_html, image_dir, downloads, notes)
     attach_nagel(sales, image_dir, downloads, notes)
+    attach_bonhams(sales, image_dir, downloads, notes)
 
     # Sale covers for sessions that still have no lot photo.
     for sale in sales:
@@ -689,9 +695,12 @@ def enrich(sales: list[dict], image_dir: Path, notes: list[str]) -> None:
             dest = image_dir / sale["id"] / "cover.jpg"
             queue(cover, dest, sale["url"], lambda sale=sale, dest=dest: assign_cover(sale, dest))
             continue
-        if not sale["url"] or "bonhams.com" in sale["url"]:
-            if "bonhams.com" in (sale["url"] or ""):
-                notes.append(f"邦瀚斯 {sale['title']}：官网验证墙（403），图片未下载，链接仍保留。")
+        if not sale["url"]:
+            continue
+        if "bonhams.com" in sale["url"]:
+            # Lot images are handled in attach_bonhams. Only note if still no cover/lots.
+            if not sale.get("cover") and not any(lot.get("image") for lot in sale["lots"]) and not sale_has_queued_image(sale, downloads):
+                notes.append(f"邦瀚斯 {sale['title']}：列表或拍品页未能取到图片，链接仍保留。")
             continue
         if generic_page(sale["url"]):
             notes.append(f"{sale['title']}：链接是部门页或首页，没有拿页面头图当专场封面。")
@@ -725,12 +734,11 @@ def enrich(sales: list[dict], image_dir: Path, notes: list[str]) -> None:
                 ok += 1
                 assign()
     notes.append(f"图片下载成功 {ok} 张，失败 {failed} 张。")
-    # Bonhams lot-level note if images missing
     for sale in sales:
-        if sale["houseId"] == "bonhams" and sale["lots"] and not any(lot.get("image") for lot in sale["lots"]):
+        if sale["houseId"] == "bonhams":
             for lot in sale["lots"]:
-                if not lot.get("image"):
-                    lot["imageNote"] = "邦瀚斯官网有验证墙，图片没能下载"
+                if not lot.get("image") and not lot.get("imageNote"):
+                    lot["imageNote"] = "邦瀚斯这件图没取到"
 
 
 def assign_image(lot, dest: Path) -> None:
@@ -758,6 +766,172 @@ def sale_has_queued_image(sale, downloads) -> bool:
         if sale["id"] in dest.parts:
             return True
     return False
+
+
+
+def bonhams_lot_number(value) -> str:
+    if isinstance(value, dict):
+        if value.get("full"):
+            return str(value["full"])
+        if value.get("number") is not None:
+            return str(value["number"])
+    if value is None:
+        return ""
+    return str(value)
+
+
+def bonhams_primary_image(lot: dict) -> str | None:
+    image = lot.get("image")
+    if isinstance(image, dict) and image.get("url"):
+        return image["url"]
+    images = lot.get("images") or []
+    if not images:
+        return None
+    primary = next((item for item in images if item.get("lPrimary")), images[0])
+    return primary.get("image_url") or primary.get("url")
+
+
+def attach_bonhams(sales, image_dir, downloads, notes) -> None:
+    """Fetch Bonhams lot thumbs from auction listing pages (paginated).
+
+    The auction landing page and department pages sometimes hit a challenge
+    wall, but /auction/<id>/...?page=N and individual /lot/<n>/ pages usually
+    return __NEXT_DATA__ with image URLs on images1.bonhams.com.
+    """
+    targets = [sale for sale in sales if sale["houseId"] == "bonhams" and sale.get("url")]
+    if not targets:
+        return
+
+    by_auction: dict[str, list[dict]] = {}
+    for sale in targets:
+        match = re.search(r"https?://(?:www\.)?bonhams\.com/auction/(\d+)/", sale["url"] or "")
+        if not match:
+            # Try first lot URL.
+            for lot in sale["lots"]:
+                match = re.search(r"https?://(?:www\.)?bonhams\.com/auction/(\d+)/", lot.get("url") or "")
+                if match:
+                    break
+        if not match:
+            continue
+        by_auction.setdefault(match.group(1), []).append(sale)
+
+    for auction_id, auction_sales in by_auction.items():
+        needed: dict[str, list[tuple[dict, dict]]] = {}
+        for sale in auction_sales:
+            for lot in sale["lots"]:
+                number = str(lot.get("lot") or "").strip()
+                if number.isdigit():
+                    needed.setdefault(number, []).append((sale, lot))
+
+        found: dict[str, dict] = {}
+        cover_url = None
+        page = 1
+        empty_pages = 0
+        # Always fetch at least page 1 for the cover; keep going while lots are missing.
+        while page <= 8 and (page == 1 or (needed and len(found) < len(needed))):
+            url = f"https://www.bonhams.com/auction/{auction_id}/asian-art/?page={page}"
+            try:
+                html = request(url, timeout=35).decode("utf-8", "replace")
+            except Exception:
+                # Generic slug fallback.
+                url = f"https://www.bonhams.com/auction/{auction_id}/?page={page}"
+                try:
+                    html = request(url, timeout=35).decode("utf-8", "replace")
+                except Exception as exc:  # noqa: BLE001
+                    notes.append(f"邦瀚斯拍卖 {auction_id} 第{page}页没打开：{exc.__class__.__name__}")
+                    break
+            match = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', html)
+            if not match:
+                notes.append(f"邦瀚斯拍卖 {auction_id} 第{page}页没有 __NEXT_DATA__")
+                empty_pages += 1
+                if empty_pages >= 2:
+                    break
+                page += 1
+                time.sleep(0.35)
+                continue
+            payload = json.loads(match.group(1))
+            props = payload.get("props", {}).get("pageProps", {})
+            if cover_url is None:
+                cover_url = (props.get("auction") or {}).get("image_url")
+            lot_data = props.get("lotData") or {}
+            lots = lot_data.get("auctionLots") or []
+            if not lots:
+                empty_pages += 1
+                if empty_pages >= 2:
+                    break
+            for remote in lots:
+                number = bonhams_lot_number(remote.get("lotNo"))
+                if number in needed and number not in found:
+                    found[number] = remote
+            page += 1
+            time.sleep(0.35)
+            if not lots:
+                continue
+
+        # Fall back to individual lot pages for anything still missing.
+        for number, pairs in needed.items():
+            if number in found:
+                continue
+            sale, lot = pairs[0]
+            lot_url = lot.get("url") or ""
+            if "/lot/" not in lot_url:
+                slug_guess = f"https://www.bonhams.com/auction/{auction_id}/lot/{number}/"
+                lot_url = slug_guess
+            try:
+                html = request(lot_url, timeout=35).decode("utf-8", "replace")
+            except Exception as exc:  # noqa: BLE001
+                notes.append(f"邦瀚斯 lot {number} 页面没打开：{exc.__class__.__name__}")
+                continue
+            match = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', html)
+            if not match:
+                notes.append(f"邦瀚斯 lot {number} 没有 __NEXT_DATA__")
+                continue
+            remote = json.loads(match.group(1)).get("props", {}).get("pageProps", {}).get("lot") or {}
+            if remote:
+                found[number] = remote
+                if not lot.get("url") or "/lot/" not in (lot.get("url") or ""):
+                    lot["url"] = lot_url
+            time.sleep(0.35)
+
+        queued = 0
+        for number, pairs in needed.items():
+            remote = found.get(number)
+            if not remote:
+                continue
+            image = bonhams_primary_image(remote)
+            if not image:
+                continue
+            # Prefer a bounded preview size when the CDN accepts width=.
+            if "images1.bonhams.com/image?" in image and "width=" not in image:
+                image = image + ("&" if "?" in image else "?") + "width=720"
+            for sale, lot in pairs:
+                dest = image_dir / sale["id"] / f"lot-{int(number):03d}.jpg"
+                downloads.append(
+                    (image, dest, "https://www.bonhams.com/", lambda lot=lot, dest=dest: assign_image(lot, dest))
+                )
+                # Keep a usable lot URL when the sheet only had the sale page.
+                slug = remote.get("slug")
+                if slug and (not lot.get("url") or lot["url"].rstrip("/").endswith(auction_id) or "/asian-art" in (lot.get("url") or "")):
+                    lot["url"] = f"https://www.bonhams.com/auction/{auction_id}/lot/{number}/{slug}/"
+                if lot["price"].get("low") is None:
+                    price = remote.get("price") or {}
+                    low = price.get("estimateLow") or remote.get("dEstimateLow")
+                    high = price.get("estimateHigh") or remote.get("dEstimateHigh")
+                    if low and high:
+                        lot["price"] = price_from_text(f"EUR {int(low)}–{int(high)}", "估价")
+                queued += 1
+
+        if cover_url:
+            for sale in auction_sales:
+                if sale.get("cover"):
+                    continue
+                dest = image_dir / sale["id"] / "cover.jpg"
+                downloads.append(
+                    (cover_url, dest, "https://www.bonhams.com/", lambda sale=sale, dest=dest: assign_cover(sale, dest))
+                )
+        notes.append(
+            f"邦瀚斯拍卖 {auction_id}：列表/拍品页匹配到 {len(found)}/{len(needed)} 件亮点图，已排队下载 {queued} 张。"
+        )
 
 
 def attach_christies(sales, html_pages, image_dir, downloads, notes) -> None:
