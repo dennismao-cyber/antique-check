@@ -267,6 +267,12 @@
     skip.appendChild(document.createTextNode(" 答对不弹框"));
     screen.appendChild(skip);
     screen.appendChild(el("p", "fine", "等级记在这台设备上。十题一局。答错仍会说明。"));
+    const digestLink = document.createElement("a");
+    digestLink.href = "porcelain/";
+    digestLink.textContent = "瓷器日报";
+    const digestLine = el("p", "fine digest-link");
+    digestLine.appendChild(digestLink);
+    screen.appendChild(digestLine);
     app.appendChild(screen);
   }
 

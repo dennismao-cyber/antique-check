@@ -98,3 +98,11 @@ python3 -m http.server 8080
 市场参考仍只连到已有成交的青花、粉彩和清仿汝。新加的品种没有对应成交时，页面写「样本不足」。
 
 玉壶春瓶一题的馆藏英文名是 Pear-Shaped Vase。喇叭口、细颈、垂腹，在梅瓶、玉壶春瓶、天球瓶里对应玉壶春瓶。
+
+## 瓷器日报
+
+案头最底下有一行「瓷器日报」，打开的是手机上的拍卖摘要，地址在 `porcelain/`。鉴定本身还在网站根目录，没有挪走。
+
+公开页面是 `https://dennismao-cyber.github.io/antique-check/porcelain/`。GitHub Pages 从 `main` 分支的仓库根目录发布，合并之后这条路径就会生效。
+
+怎么换一天的内容，写在 `porcelain/README.md`。页面只读 `porcelain/data/` 里的 JSON，不用改前端。

@@ -146,6 +146,9 @@ button {
   letter-spacing: 0.08em;
 }
 
+.digest-link { margin-top: 14px; }
+.digest-link a { color: inherit; }
+
 .primary {
   width: 100%;
   height: 52px;
