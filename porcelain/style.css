@@ -417,3 +417,31 @@ a { -webkit-tap-highlight-color: transparent; }
 }
 
 .foot a { color: inherit; }
+
+.sister {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 4px 12px 12px;
+  padding: 12px 14px;
+  min-height: 56px;
+  border-radius: 16px;
+  background: #1b2430;
+  color: #f4efe6;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+}
+
+.sister strong {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+}
+
+.sister span {
+  margin-top: 2px;
+  color: rgba(244, 239, 230, 0.7);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}

@@ -46,3 +46,5 @@ python3 tools/build_porcelain_digest.py \
 ## 图片来源
 
 页面上的拍品图来自各拍卖行公开图录，仅用于本日报跟拍备忘，不是本站原创。点进拍品可回到拍卖行页面。
+
+同类的欧洲拍行筛选日报在 `europe/`，公开地址：`https://dennismao-cyber.github.io/antique-check/porcelain/europe/`。本地看：`http://localhost:8080/porcelain/europe/`。

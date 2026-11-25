@@ -192,6 +192,7 @@
       header("瓷器日报", dayLabel + " · 上海", "") +
       daySwitch +
       '<p class="lead">' + esc(digest.intro || "") + "</p>" +
+      '<a class="sister" href="europe/"><strong>欧洲筛选日报</strong><span>2026年11月25日 · 欧洲 · 瓷器</span></a>' +
       '<div class="chips">' + chips + "</div>" +
       '<p class="section-label">专场</p>' +
       list +
