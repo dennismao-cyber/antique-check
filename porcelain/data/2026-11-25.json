@@ -8,25 +8,29 @@
     "有的网站有验证墙或返回 403，那些场次只保留了表格里的文字和官方链接。",
     "苏富比巴黎 Asian Art / 5000 Years、佳士得 Blaquier-Arrieta、Koller 的开拍时刻，表格里标了待核实。",
     "刚结束的场次只作对照，不用于跟拍。",
-    "这是跟拍备忘，不构成价值评定或投资建议。"
+    "这是跟拍备忘，不构成价值评定或投资建议。",
+    "页面图片来自各拍卖行公开图录，仅供跟拍备忘，不是本站原创。"
   ],
   "fetchNotes": [
     "苏富比 CHINA / 5000 YEARS：接口返回 163 件（含非瓷）",
     "苏富比 Treasures | London（含中国瓷器精品）：接口返回 25 件（含非瓷）",
     "佳士得 Art d'Asie 精选页读到瓷器 2 件，估价来自精选页，不是起拍价，页面没给拍品号。",
     "Nagel 乾隆仿掐丝珐琅釉瓶：亮点页有图，页面没写估价。",
-    "邦瀚斯 Asian Art：官网验证墙（403），图片未下载，链接仍保留。",
+    "邦瀚斯拍卖 31819：列表/拍品页匹配到 5/5 件亮点图，已排队下载 5 张。",
+    "邦瀚斯拍卖 32090：列表/拍品页匹配到 0/0 件亮点图，已排队下载 0 张。",
+    "Asian Art / 5000 Years：链接是部门页或首页，没有拿页面头图当专场封面。",
+    "The Blaquier-Arrieta Collection, Part II：链接是部门页或首页，没有拿页面头图当专场封面。",
     "Asian Art：专场页没打开（HTTPError），没有专场封面。",
     "Arts d'Asie：专场页没有可用封面图。",
     "Arts d'Asie：专场页没有可用封面图。",
-    "Asiatica: Himalaya, China (A219AS)：专场页没有可用封面图。",
-    "Chinese, Japanese & Southeast Asian Art Parts I–II：专场页没有可用封面图。",
+    "Asiatica: Himalaya, China (A219AS)：链接是部门页或首页，没有拿页面头图当专场封面。",
+    "Sale 871: Asian Antiques（预期含中国古瓷）：链接是部门页或首页，没有拿页面头图当专场封面。",
+    "Fine Asian Art / Asian Art II 等（11月亚洲周）：链接是部门页或首页，没有拿页面头图当专场封面。",
+    "Chinese, Japanese & Southeast Asian Art Parts I–II：链接是部门页或首页，没有拿页面头图当专场封面。",
     "Fine Asian Works of Art：专场页没打开（HTTPError），没有专场封面。",
-    "Asian Art / Chinese Art：专场页没有可用封面图。",
-    "Asian and Islamic Art：专场页没有可用封面图。",
-    "邦瀚斯 Fine Chinese Ceramics and Works of Art（香港）：官网验证墙（403），图片未下载，链接仍保留。",
-    "图片下载成功 107 张，失败 1 张。",
-    "苏富比巴黎这场的链接是部门页，每日拍卖首页是字标，Woolley 部门页是拍卖现场照片，都没有当成专场封面。"
+    "Asian Art / Chinese Art：链接是部门页或首页，没有拿页面头图当专场封面。",
+    "Asian and Islamic Art：链接是部门页或首页，没有拿页面头图当专场封面。",
+    "图片下载成功 110 张，失败 1 张。"
   ],
   "houses": [
     {
@@ -2017,7 +2021,7 @@
         "high": 70000,
         "text": "场次估价跨度约 EUR 600–70,000；例：乾隆炉钧釉瓶 EUR 10,000–15,000；重要磁州窑瓶 EUR 20,000–30,000（估价）"
       },
-      "cover": null,
+      "cover": "images/2026-11-25/bonhams-6/cover.jpg",
       "lots": [
         {
           "lot": "176",
@@ -2032,8 +2036,8 @@
             "text": "估价 EUR 10,000–15,000"
           },
           "url": "https://www.bonhams.com/auction/31819/lot/176/vase-bouteille-en-porcelaine-a-glacure-oeufs-de-rouge-gorge-marque-et-epoque-qianlong-1736-1795/",
-          "image": null,
-          "imageNote": "邦瀚斯官网有验证墙，图片没能下载"
+          "image": "images/2026-11-25/bonhams-6/lot-176.jpg",
+          "imageNote": ""
         },
         {
           "lot": "177",
@@ -2048,8 +2052,8 @@
             "text": "估价 EUR 5,000–8,000"
           },
           "url": "https://www.bonhams.com/auction/31819/lot/177/grand-vase-en-porcelaine-de-la-famille-rose-fin-de-la-dynastie-qing-1644-1911-periode-republique/",
-          "image": null,
-          "imageNote": "邦瀚斯官网有验证墙，图片没能下载"
+          "image": "images/2026-11-25/bonhams-6/lot-177.jpg",
+          "imageNote": ""
         },
         {
           "lot": "180",
@@ -2064,8 +2068,8 @@
             "text": "估价 EUR 8,000–12,000"
           },
           "url": "https://www.bonhams.com/auction/31819/lot/180/tres-grand-plat-en-porcelaine-bleu-blanc-fin-de-la-dynastie-qing-1644-1911-periode-republique/",
-          "image": null,
-          "imageNote": "邦瀚斯官网有验证墙，图片没能下载"
+          "image": "images/2026-11-25/bonhams-6/lot-180.jpg",
+          "imageNote": ""
         },
         {
           "lot": "182",
@@ -2080,8 +2084,8 @@
             "text": "估价 EUR 1,500–2,500"
           },
           "url": "https://www.bonhams.com/auction/31819/lot/182/vase-bouteille-en-porcelaine-blanc-de-chine-dynastie-qing-xviiie-siecle/",
-          "image": null,
-          "imageNote": "邦瀚斯官网有验证墙，图片没能下载"
+          "image": "images/2026-11-25/bonhams-6/lot-182.jpg",
+          "imageNote": ""
         },
         {
           "lot": "110",
@@ -2095,9 +2099,9 @@
             "high": 30000,
             "text": "估价 EUR 20,000–30,000"
           },
-          "url": "https://www.bonhams.com/auction/31819/asian-art/",
-          "image": null,
-          "imageNote": "邦瀚斯官网有验证墙，图片没能下载"
+          "url": "https://www.bonhams.com/auction/31819/lot/110/important-et-rare-vase-en-gres-cizhou-dynastie-des-song-du-nord-960-1126/",
+          "image": "images/2026-11-25/bonhams-6/lot-110.jpg",
+          "imageNote": ""
         }
       ]
     },
@@ -2612,7 +2616,7 @@
         "low": null,
         "high": null
       },
-      "cover": null,
+      "cover": "images/2026-11-25/bonhams-24/cover.jpg",
       "lots": []
     }
   ]
