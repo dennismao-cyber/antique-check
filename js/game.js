@@ -189,10 +189,10 @@
   }
 
   const RANK_FACES = [
-    { file: "images/ui/xuetu.svg", short: "学徒" },
-    { file: "images/ui/chuji.svg", short: "初级鉴定师" },
-    { file: "images/ui/zhongji.svg", short: "中级鉴定师" },
-    { file: "images/ui/gaoji.svg", short: "高级鉴定师" },
+    { file: "images/ui/xuetu.webp", short: "学徒" },
+    { file: "images/ui/chuji.webp", short: "初级鉴定师" },
+    { file: "images/ui/zhongji.webp", short: "中级鉴定师" },
+    { file: "images/ui/gaoji.webp", short: "高级鉴定师" },
   ];
 
   function showHome() {
@@ -202,9 +202,11 @@
     clearApp();
     const screen = el("section", "screen screen-home");
     const scene = el("div", "home-scene");
-    const brand = el("div", "brand");
-    brand.appendChild(el("span", "seal-mark", "鉴"));
-    brand.appendChild(el("h1", null, "鉴瓷"));
+    const brand = el("h1", "brand");
+    const word = document.createElement("img");
+    word.src = "images/ui/title.webp";
+    word.alt = "鉴瓷";
+    brand.appendChild(word);
     scene.appendChild(brand);
     const stage = el("div", "rank-stage");
     stage.setAttribute("aria-label", "我现在是" + rank.name);
@@ -222,7 +224,7 @@
     scene.appendChild(stage);
     const vase = document.createElement("img");
     vase.className = "deco-vase";
-    vase.src = "images/ui/vase.svg";
+    vase.src = "images/ui/vase.webp";
     vase.alt = "";
     scene.appendChild(vase);
     screen.appendChild(scene);
@@ -254,8 +256,12 @@
     menu.appendChild(marketBtn);
     screen.appendChild(menu);
 
-    const extra = el("div", "home-extra");
-    extra.appendChild(el("p", "fine", stillNeed(stat) + "。作答 " + stat.attempts + " 题。这一级先看" + rank.focus + "。"));
+    const more = document.createElement("details");
+    more.className = "home-more";
+    const sum = document.createElement("summary");
+    sum.textContent = "更多";
+    more.appendChild(sum);
+    more.appendChild(el("p", "fine", stillNeed(stat) + "。作答 " + stat.attempts + " 题。这一级先看" + rank.focus + "。"));
     const links = el("div", "home-links");
     const atlas = el("button", "linkish", "图鉴");
     atlas.type = "button";
@@ -265,27 +271,8 @@
     digest.href = "porcelain/";
     digest.textContent = "瓷器日报";
     links.appendChild(digest);
-    extra.appendChild(links);
-    const name = el("input", "field");
-    name.value = person.name === "未署名" ? "" : person.name;
-    name.placeholder = "怎么称呼（拜师时用）";
-    name.addEventListener("change", function () {
-      person.name = name.value.trim() || "未署名";
-      save();
-    });
-    extra.appendChild(name);
-    const skip = el("label", "skip-toggle");
-    const box = document.createElement("input");
-    box.type = "checkbox";
-    box.checked = !!person.skipCorrectPopup;
-    box.addEventListener("change", function () {
-      person.skipCorrectPopup = box.checked;
-      save();
-    });
-    skip.appendChild(box);
-    skip.appendChild(document.createTextNode(" 答对不弹框"));
-    extra.appendChild(skip);
-    screen.appendChild(extra);
+    more.appendChild(links);
+    screen.appendChild(more);
     app.appendChild(screen);
   }
 
@@ -334,13 +321,16 @@
     const accText = stat.attempts ? Math.round(accuracy(stat) * 100) + "%" : "还没开题";
     const top = el("header", "q-top");
     const brand = el("div", "brand-mini");
-    brand.appendChild(el("span", "seal-mark", "鉴"));
-    brand.appendChild(el("strong", null, "鉴瓷"));
+    const word = document.createElement("img");
+    word.src = "images/ui/title.webp";
+    word.alt = "鉴瓷";
+    brand.appendChild(word);
     top.appendChild(brand);
     const avatar = document.createElement("img");
     avatar.className = "mini-avatar";
     avatar.src = RANK_FACES[person.rankIndex].file;
     avatar.alt = rankOf(person).name;
+    avatar.style.objectPosition = ["30% 16%", "42% 18%", "40% 10%", "68% 8%"][person.rankIndex];
     top.appendChild(avatar);
     top.appendChild(el("span", "rank-pill", rankOf(person).name));
     top.appendChild(el("span", "score-mini", "答对 " + stat.correct + " / " + NEED_CORRECT + " · 正确率 " + accText));
@@ -385,6 +375,13 @@
     });
     photo.appendChild(loupe);
     photo.addEventListener("click", function () { openZoom(views[viewIndex].src); });
+    ["tl", "tr", "bl", "br"].forEach(function (corner) {
+      const ornament = document.createElement("img");
+      ornament.className = "frame-corner frame-" + corner;
+      ornament.src = "images/ui/frame-" + corner + ".webp";
+      ornament.alt = "";
+      photo.appendChild(ornament);
+    });
     frame.appendChild(photo);
     const viewBar = el("div", "view-bar");
     const otherTotal = views.filter(function (view) { return view.kind === "other"; }).length;
@@ -722,15 +719,16 @@
   function showCelebration(opts) {
     clearApp();
     const screen = el("section", "screen screen-rite");
-    const brand = el("div", "brand");
-    brand.appendChild(el("span", "seal-mark", "鉴"));
-    const title = el("h1", null, "鉴瓷");
-    brand.appendChild(title);
+    const brand = el("h1", "brand");
+    const word = document.createElement("img");
+    word.src = "images/ui/title.webp";
+    word.alt = "鉴瓷";
+    brand.appendChild(word);
     screen.appendChild(brand);
     screen.appendChild(el("h2", "banner-navy", opts.title));
     const scene = document.createElement("img");
     scene.className = "rite-scene";
-    scene.src = "images/ui/rite.svg";
+    scene.src = "images/ui/rite.webp";
     scene.alt = "学徒向师父行礼";
     screen.appendChild(scene);
     const card = el("div", "promote-card");
@@ -782,7 +780,15 @@
     clearApp();
     const screen = el("section", "screen");
     screen.appendChild(backButton());
-    screen.appendChild(el("h2", "prompt", "拜师"));
+    screen.appendChild(el("h2", "prompt banner-navy", "拜师"));
+    const name = el("input", "field");
+    name.value = person.name === "未署名" ? "" : person.name;
+    name.placeholder = "怎么称呼（拜师时用）";
+    name.addEventListener("change", function () {
+      person.name = name.value.trim() || "未署名";
+      save();
+    });
+    screen.appendChild(name);
     screen.appendChild(el("p", "note", "学徒只能拜中级鉴定师或高级鉴定师。升到初级鉴定师就可以出师。任何一方都能解除关系，解除只发生在自己这台设备上。"));
 
     if (person.mentor) {

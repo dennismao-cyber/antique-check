@@ -41,11 +41,9 @@ body {
 
 .sheet {
   background:
-    url("../images/ui/mountains.svg") center bottom / 100% 180px no-repeat,
-    url("../images/ui/plum.svg") left -8px top -6px / 168px no-repeat,
-    radial-gradient(circle at 92% 88%, rgba(255, 255, 255, 0.7) 0 2px, transparent 3px),
-    repeating-linear-gradient(0deg, rgba(180, 150, 100, 0.035) 0 1px, transparent 1px 4px),
-    var(--paper);
+    url("../images/ui/mountains.webp") center bottom / 100% 150px no-repeat,
+    url("../images/ui/plum-br.webp") right -6px bottom 8px / 150px no-repeat,
+    #e7dfd0;
   color: var(--ink);
   box-shadow: inset 0 0 0 1px rgba(212, 181, 106, 0.25);
 }
@@ -56,7 +54,7 @@ body {
 
 .home-scene {
   position: relative;
-  min-height: 292px;
+  min-height: 400px;
 }
 
 .brand {
@@ -68,17 +66,9 @@ body {
   padding-top: 6px;
 }
 
-.brand h1,
-.brand-mini strong {
-  margin: 0;
-  font-family: var(--serif);
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #163e6e;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
-}
-
-.brand h1 { font-size: 64px; line-height: 0.95; }
+.brand { margin: 0; }
+.brand img { width: min(168px, 46vw); height: auto; display: block; }
+.brand-mini img { width: 62px; height: auto; display: block; }
 
 .seal-mark {
   display: inline-grid;
@@ -96,31 +86,35 @@ body {
 
 .deco-vase {
   position: absolute;
-  left: -6px;
-  bottom: -8px;
-  width: 118px;
+  left: -12px;
+  bottom: -6px;
+  width: 150px;
   height: auto;
   pointer-events: none;
-  filter: drop-shadow(0 8px 10px rgba(30, 60, 90, 0.12));
+  z-index: 1;
 }
+.brand { position: relative; z-index: 3; }
 
 .rank-stage {
   position: absolute;
   right: 0;
-  top: 8px;
-  width: 68%;
-  height: 280px;
+  top: 0;
+  width: 56%;
+  height: 390px;
+  z-index: 3;
 }
 
 .rank-fig {
   position: absolute;
   margin: 0;
-  width: 86px;
+  width: 96px;
   text-align: center;
+  opacity: 0.62;
+  filter: saturate(0.8) brightness(0.96);
 }
 
 .rank-fig img {
-  width: 78px;
+  width: 92px;
   height: auto;
   display: block;
   margin: 0 auto;
@@ -128,7 +122,9 @@ body {
 
 .rank-fig figcaption {
   display: inline-block;
-  margin-top: -4px;
+  margin-top: 2px;
+  position: relative;
+  z-index: 2;
   padding: 1px 8px;
   border: 1px solid var(--gold);
   border-radius: 999px;
@@ -141,12 +137,14 @@ body {
 
 .rank-fig.is-current {
   z-index: 3;
-  width: 108px;
+  width: 124px;
+  opacity: 1;
+  filter: none;
 }
 
 .rank-fig.is-current img {
-  width: 104px;
-  filter: drop-shadow(0 0 10px rgba(232, 196, 106, 0.95));
+  width: 118px;
+  filter: drop-shadow(0 0 12px rgba(232, 196, 106, 0.95));
 }
 
 .rank-fig.is-current figcaption {
@@ -156,10 +154,47 @@ body {
   font-weight: 600;
 }
 
-.rank-fig[data-step="0"] { left: 6%; bottom: 0; }
-.rank-fig[data-step="1"] { left: 46%; bottom: 70px; }
-.rank-fig[data-step="2"] { left: 4%; bottom: 132px; }
-.rank-fig[data-step="3"] { right: 0; top: 0; }
+.rank-fig[data-step="0"] { left: 0; bottom: 4px; }
+.rank-fig[data-step="1"] { right: 0; bottom: 108px; left: auto; }
+.rank-fig[data-step="2"] { left: 0; bottom: 168px; }
+.rank-fig[data-step="3"] { right: -4px; top: 0; }
+
+.home-more {
+  color: var(--muted);
+  font-size: 13px;
+}
+.home-more summary {
+  text-align: center;
+  letter-spacing: 0.16em;
+  cursor: pointer;
+}
+
+.photo {
+  border: 1.5px solid var(--gold);
+}
+.photo img.frame-corner {
+  position: absolute;
+  width: 46px;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  opacity: 1;
+  object-fit: fill;
+  z-index: 3;
+  pointer-events: none;
+}
+.frame-tl { left: 0; top: 0; }
+.frame-tr { right: 0; top: 0; }
+.frame-bl { left: 0; bottom: 0; }
+.frame-br { right: 0; bottom: 0; }
+
+.rite-scene {
+  width: min(100%, 420px);
+  height: auto;
+  border-radius: 16px;
+  display: block;
+  margin: 8px auto 12px;
+}
 
 .progress-card {
   position: relative;
@@ -304,9 +339,10 @@ body {
 
 .rank-pill,
 .score-mini {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--navy);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .rank-pill {
@@ -352,9 +388,9 @@ body {
 
 .loupe {
   position: absolute;
-  right: 8px;
-  top: 8px;
-  z-index: 2;
+  right: 10px;
+  top: 44px;
+  z-index: 4;
   width: 34px;
   height: 34px;
   border-radius: 50%;
@@ -471,8 +507,9 @@ body {
   padding: 0 0 16px;
   overflow: hidden;
   background:
-    url("../images/ui/mountains.svg") center bottom / 100% 90px no-repeat,
-    #f7f1e6;
+    url("../images/ui/mountains.webp") center bottom / 100% 110px no-repeat,
+    url("../images/ui/plum-br.webp") right -8px bottom 4px / 110px no-repeat,
+    #f6f0e4;
   border: 2px solid var(--gold);
   border-radius: 18px;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
