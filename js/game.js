@@ -189,10 +189,10 @@
   }
 
   const RANK_FACES = [
-    { file: "images/ranks/xuetu.svg", short: "学徒" },
-    { file: "images/ranks/chuji.svg", short: "初级" },
-    { file: "images/ranks/zhongji.svg", short: "中级" },
-    { file: "images/ranks/gaoji.svg", short: "高级" },
+    { file: "images/ui/xuetu.svg", short: "学徒" },
+    { file: "images/ui/chuji.svg", short: "初级鉴定师" },
+    { file: "images/ui/zhongji.svg", short: "中级鉴定师" },
+    { file: "images/ui/gaoji.svg", short: "高级鉴定师" },
   ];
 
   function showHome() {
@@ -201,37 +201,40 @@
     const stat = statOf(person);
     clearApp();
     const screen = el("section", "screen screen-home");
-    const head = el("div", "home-head");
-    const hero = el("div", "hero");
-    hero.appendChild(el("div", "seal", "鉴"));
-    hero.appendChild(el("p", "rank-chip", rank.name));
-    hero.appendChild(el("h1", "title", "鉴瓷"));
-    hero.appendChild(el("p", "premise", "这一级先看" + rank.focus + "。"));
-    head.appendChild(hero);
-    const rail = el("aside", "rank-rail");
-    rail.setAttribute("aria-label", "我现在是" + rank.name);
+    const scene = el("div", "home-scene");
+    const brand = el("div", "brand");
+    brand.appendChild(el("span", "seal-mark", "鉴"));
+    brand.appendChild(el("h1", null, "鉴瓷"));
+    scene.appendChild(brand);
+    const stage = el("div", "rank-stage");
+    stage.setAttribute("aria-label", "我现在是" + rank.name);
     RANK_FACES.forEach(function (face, i) {
       const current = i === person.rankIndex;
       const fig = el("figure", "rank-fig" + (current ? " is-current" : ""));
+      fig.dataset.step = String(i);
       const img = document.createElement("img");
       img.src = face.file;
       img.alt = current ? "我现在是" + RANKS[i].name : RANKS[i].name;
       fig.appendChild(img);
-      fig.appendChild(el("figcaption", null, current ? "我现在是" + RANKS[i].name : face.short));
-      rail.appendChild(fig);
+      fig.appendChild(el("figcaption", null, face.short));
+      stage.appendChild(fig);
     });
-    head.appendChild(rail);
-    screen.appendChild(head);
-    const block = el("div", "progress-block");
+    scene.appendChild(stage);
+    const vase = document.createElement("img");
+    vase.className = "deco-vase";
+    vase.src = "images/ui/vase.svg";
+    vase.alt = "";
+    scene.appendChild(vase);
+    screen.appendChild(scene);
+
     const accText = stat.attempts ? Math.round(accuracy(stat) * 100) + "%" : "还没开题";
-    block.appendChild(el("p", "progress-line", "答对 " + stat.correct + " / " + NEED_CORRECT));
+    const block = el("div", "progress-card");
+    block.appendChild(el("p", "progress-line", "答对 " + stat.correct + " / " + NEED_CORRECT + "，正确率 " + accText + " · 目标 70%"));
     const bar = el("div", "bar");
     const fill = el("span");
     fill.style.width = Math.min(100, (stat.correct / NEED_CORRECT) * 100) + "%";
     bar.appendChild(fill);
     block.appendChild(bar);
-    block.appendChild(el("p", "progress-line", "正确率 " + accText + " · 目标 70%"));
-    block.appendChild(el("p", "fine", stillNeed(stat) + "。作答 " + stat.attempts + " 题。"));
     screen.appendChild(block);
 
     const menu = el("div", "menu");
@@ -239,14 +242,30 @@
     start.type = "button";
     start.addEventListener("click", startRound);
     menu.appendChild(start);
-    [["图鉴", showAtlas], ["拜师", showMentor], ["市场指导估价", showMarket]].forEach(function (pair) {
-      const button = el("button", "ghost", pair[0]);
-      button.type = "button";
-      button.addEventListener("click", pair[1]);
-      menu.appendChild(button);
-    });
+    const mentorBtn = el("button", "ghost", "");
+    mentorBtn.type = "button";
+    mentorBtn.textContent = "拜师";
+    mentorBtn.addEventListener("click", showMentor);
+    menu.appendChild(mentorBtn);
+    const marketBtn = el("button", "ghost", "");
+    marketBtn.type = "button";
+    marketBtn.textContent = "市场指导估价";
+    marketBtn.addEventListener("click", function () { showMarket(); });
+    menu.appendChild(marketBtn);
     screen.appendChild(menu);
 
+    const extra = el("div", "home-extra");
+    extra.appendChild(el("p", "fine", stillNeed(stat) + "。作答 " + stat.attempts + " 题。这一级先看" + rank.focus + "。"));
+    const links = el("div", "home-links");
+    const atlas = el("button", "linkish", "图鉴");
+    atlas.type = "button";
+    atlas.addEventListener("click", showAtlas);
+    links.appendChild(atlas);
+    const digest = document.createElement("a");
+    digest.href = "porcelain/";
+    digest.textContent = "瓷器日报";
+    links.appendChild(digest);
+    extra.appendChild(links);
     const name = el("input", "field");
     name.value = person.name === "未署名" ? "" : person.name;
     name.placeholder = "怎么称呼（拜师时用）";
@@ -254,7 +273,7 @@
       person.name = name.value.trim() || "未署名";
       save();
     });
-    screen.appendChild(name);
+    extra.appendChild(name);
     const skip = el("label", "skip-toggle");
     const box = document.createElement("input");
     box.type = "checkbox";
@@ -265,14 +284,8 @@
     });
     skip.appendChild(box);
     skip.appendChild(document.createTextNode(" 答对不弹框"));
-    screen.appendChild(skip);
-    screen.appendChild(el("p", "fine", "等级记在这台设备上。十题一局。答错仍会说明。"));
-    const digestLink = document.createElement("a");
-    digestLink.href = "porcelain/";
-    digestLink.textContent = "瓷器日报";
-    const digestLine = el("p", "fine digest-link");
-    digestLine.appendChild(digestLink);
-    screen.appendChild(digestLine);
+    extra.appendChild(skip);
+    screen.appendChild(extra);
     app.appendChild(screen);
   }
 
@@ -317,18 +330,27 @@
     const person = profile();
     clearApp();
     const screen = el("section", "screen screen-q");
-    const head = el("header", "q-head");
-    const meta = el("div", "q-meta");
-    meta.appendChild(el("span", "count", "第 " + (index + 1) + " / " + round.length + " 题"));
-    meta.appendChild(el("span", "axis", AXIS_LABEL[q.axis] || q.axis));
-    head.appendChild(meta);
-    const bar = el("div", "progress");
-    const fill = el("span");
-    fill.style.width = ((index / round.length) * 100) + "%";
-    bar.appendChild(fill);
-    head.appendChild(bar);
-    screen.appendChild(head);
-    screen.appendChild(el("p", "fine", rankOf(person).name + " · " + rankOf(person).focus));
+    const stat = statOf(person);
+    const accText = stat.attempts ? Math.round(accuracy(stat) * 100) + "%" : "还没开题";
+    const top = el("header", "q-top");
+    const brand = el("div", "brand-mini");
+    brand.appendChild(el("span", "seal-mark", "鉴"));
+    brand.appendChild(el("strong", null, "鉴瓷"));
+    top.appendChild(brand);
+    const avatar = document.createElement("img");
+    avatar.className = "mini-avatar";
+    avatar.src = RANK_FACES[person.rankIndex].file;
+    avatar.alt = rankOf(person).name;
+    top.appendChild(avatar);
+    top.appendChild(el("span", "rank-pill", rankOf(person).name));
+    top.appendChild(el("span", "score-mini", "答对 " + stat.correct + " / " + NEED_CORRECT + " · 正确率 " + accText));
+    screen.appendChild(top);
+    const roundBar = el("div", "round-progress");
+    const roundFill = el("span");
+    roundFill.style.width = ((index / round.length) * 100) + "%";
+    roundBar.appendChild(roundFill);
+    roundBar.title = "第 " + (index + 1) + " / " + round.length + " 题 · " + (AXIS_LABEL[q.axis] || q.axis);
+    screen.appendChild(roundBar);
 
     const views = (typeof VIEWS !== "undefined" && VIEWS[q.accession]) || [{ src: q.image, kind: "main", label: "全器" }];
     let viewIndex = 0;
@@ -354,15 +376,24 @@
     img.src = views[viewIndex].src;
     if (img.complete && img.naturalWidth > 0) ready();
     photo.appendChild(img);
+    const loupe = el("button", "loupe", "+");
+    loupe.type = "button";
+    loupe.setAttribute("aria-label", "放大");
+    loupe.addEventListener("click", function (event) {
+      event.stopPropagation();
+      openZoom(views[viewIndex].src);
+    });
+    photo.appendChild(loupe);
     photo.addEventListener("click", function () { openZoom(views[viewIndex].src); });
     frame.appendChild(photo);
     const viewBar = el("div", "view-bar");
+    const otherTotal = views.filter(function (view) { return view.kind === "other"; }).length;
     let otherCount = 0;
     views.forEach(function (view, i) {
       let label = view.label;
       if (view.kind === "other") {
         otherCount += 1;
-        label = "其他" + otherCount;
+        label = otherTotal > 1 ? "其他" + otherCount : "其他";
       }
       const btn = el("button", "view-btn" + (i === viewIndex ? " is-on" : ""), label);
       btn.type = "button";
@@ -376,7 +407,6 @@
     if (!views.some(function (view) { return view.kind === "foot"; })) {
       frame.appendChild(el("p", "fine view-note", "暂无单独确认的底足照片"));
     }
-    frame.appendChild(el("p", "fine view-note", "点照片可放大"));
     const cap = el("figcaption", "credit");
     cap.appendChild(el("span", "obj-name", q.name));
     const link = document.createElement("a");
@@ -389,7 +419,7 @@
     frame.appendChild(marketChip(q.accession, q.market));
     screen.appendChild(frame);
 
-    screen.appendChild(el("h2", "prompt", q.prompt));
+    screen.appendChild(el("h2", "prompt banner-navy", q.prompt));
     const options = el("div", "options");
     shuffle(q.options).forEach(function (label) {
       const btn = document.createElement("button");
@@ -459,7 +489,10 @@
     const person = profile();
     const back = el("div", "modal-back");
     const modal = el("div", "modal");
-    modal.appendChild(el("p", "eyebrow", ok ? "答对了" : "答错了"));
+    const banner = el("div", "modal-banner " + (ok ? "is-ok" : "is-bad"));
+    banner.appendChild(el("span", "seal-badge", ok ? "正" : "误"));
+    banner.appendChild(document.createTextNode(ok ? "回答正确" : "回答有误"));
+    modal.appendChild(banner);
     modal.appendChild(el("h3", null, (ok ? "正是「" : "应是「") + q.answer + "」"));
     if (!ok && person.mentor) {
       const who = person.mentor.preview ? "预演师父" : "师父";
@@ -566,6 +599,17 @@
       person.rankIndex = before + 1;
       promoted = true;
       save();
+    }
+    if (promoted) {
+      const next = RANKS[person.rankIndex + 1];
+      showCelebration({
+        title: "晋升",
+        rankName: RANKS[person.rankIndex].name,
+        subtitle: next ? "继续鉴定，向" + next.name + "进发" : "这一级已经是最高，继续鉴定",
+        onContinue: startRound,
+        secondary: { label: "回案头", onClick: showHome },
+      });
+      return;
     }
     clearApp();
     const screen = el("section", "screen screen-end");
@@ -675,6 +719,40 @@
     app.appendChild(screen);
   }
 
+  function showCelebration(opts) {
+    clearApp();
+    const screen = el("section", "screen screen-rite");
+    const brand = el("div", "brand");
+    brand.appendChild(el("span", "seal-mark", "鉴"));
+    const title = el("h1", null, "鉴瓷");
+    brand.appendChild(title);
+    screen.appendChild(brand);
+    screen.appendChild(el("h2", "banner-navy", opts.title));
+    const scene = document.createElement("img");
+    scene.className = "rite-scene";
+    scene.src = "images/ui/rite.svg";
+    scene.alt = "学徒向师父行礼";
+    screen.appendChild(scene);
+    const card = el("div", "promote-card");
+    card.appendChild(el("p", null, opts.kicker || "晋升："));
+    card.appendChild(el("div", "rank-badge", opts.rankName));
+    card.appendChild(el("p", null, opts.subtitle || ""));
+    screen.appendChild(card);
+    const go = el("button", "primary", "继续鉴定");
+    go.type = "button";
+    go.addEventListener("click", opts.onContinue || showHome);
+    screen.appendChild(go);
+    if (opts.secondary) {
+      const alt = el("button", "linkish", opts.secondary.label);
+      alt.type = "button";
+      alt.addEventListener("click", opts.secondary.onClick);
+      const row = el("div", "home-links");
+      row.appendChild(alt);
+      screen.appendChild(row);
+    }
+    app.appendChild(screen);
+  }
+
   function playRite(caption) {
     const box = el("div", "rite");
     const pupil = el("div", "seal pupil", "徒");
@@ -732,9 +810,13 @@
         }
         person.mentor = { name: data.n, rank: data.r, id: data.id, preview: false };
         save();
-        const rite = playRite("拜师礼成");
-        screen.appendChild(rite);
-        rite.scrollIntoView({ block: "center" });
+        showCelebration({
+          title: "拜师成功",
+          kicker: "师父",
+          rankName: data.r,
+          subtitle: data.n + " 已收下这个徒弟",
+          onContinue: showHome,
+        });
       });
       screen.appendChild(go);
     } else {
@@ -821,12 +903,17 @@
     preview.type = "button";
     const riteSlot = el("div");
     preview.addEventListener("click", function () {
-      riteSlot.replaceChildren(playRite("预演 · 拜师礼成"));
-      riteSlot.scrollIntoView({ block: "center" });
       if (!person.mentor) {
         person.mentor = { name: "预演", rank: "中级鉴定师", id: "preview", preview: true };
         save();
       }
+      showCelebration({
+        title: "拜师成功",
+        kicker: "预演",
+        rankName: "中级鉴定师",
+        subtitle: "这一次是预演，不改变正式等级",
+        onContinue: showMentor,
+      });
     });
     screen.appendChild(preview);
     screen.appendChild(riteSlot);
@@ -903,11 +990,10 @@
     const info = summarizeVariety(id);
     const button = el("button", "market-chip");
     button.type = "button";
-    if (!id || info.thin) {
-      button.textContent = "市场参考 · " + (info.name ? info.name + " · " : "") + "样本不足";
-    } else {
-      button.textContent = "市场参考 · " + info.name + " · 约 " + info.avg.toLocaleString("zh-CN") + " 元";
-    }
+    let tail = "样本不足";
+    if (id && !info.thin) tail = info.name + " · 约 " + info.avg.toLocaleString("zh-CN") + " 元";
+    else if (info.name) tail = info.name + " · 样本不足";
+    button.textContent = "市场参考估价 · " + tail;
     button.addEventListener("click", function (event) {
       event.stopPropagation();
       openMarketOverlay(id);
@@ -934,16 +1020,25 @@
       host = app;
     }
     const screen = el("section", "screen");
+    screen.classList.add("screen-market");
+    const head = el("div", "market-head");
     if (embedded) {
-      const back = el("button", "back", "返回答题");
+      const back = el("button", "back-arrow", "返");
       back.type = "button";
+      back.setAttribute("aria-label", "返回答题");
       back.addEventListener("click", function () { host.remove(); });
-      screen.appendChild(back);
+      head.appendChild(back);
     } else {
-      screen.appendChild(backButton());
+      const back = backButton("返");
+      back.classList.add("back-arrow");
+      back.setAttribute("aria-label", "回案头");
+      head.appendChild(back);
     }
-    screen.appendChild(el("h2", "prompt", "市场指导估价"));
-    screen.appendChild(el("p", "disclaimer", "仅供参考，不构成价值评定或投资建议。"));
+    head.appendChild(el("h2", "banner-navy", "市场指导估价"));
+    head.appendChild(el("span", null, ""));
+    screen.appendChild(head);
+    screen.appendChild(el("p", "disclaimer", "仅供参考"));
+    screen.appendChild(el("p", "fine", "不构成价值评定或投资建议。"));
     const filters = el("div", "filters");
     const body = el("div");
     MARKET.varieties.forEach(function (variety, i) {
@@ -989,8 +1084,19 @@
         body.appendChild(hero);
         body.appendChild(el("p", "fine", "已去掉异常值 " + (marked.length - used.length) + " 条。权重每五年大约减半。"));
       }
-      body.appendChild(buildChart(marked));
-      body.appendChild(el("p", "fine", "横轴是年份，纵轴是人民币。绿线按时间连上计入均价的成交。红点是异常值，不计入均价，也不在连线上。"));
+      const chartWrap = el("div", "chart-card");
+      chartWrap.appendChild(buildChart(marked, thin ? null : (function () {
+        let sum = 0;
+        let wsum = 0;
+        used.forEach(function (row) {
+          sum += row.lot.cny * row.weight;
+          wsum += row.weight;
+        });
+        return wsum ? sum / wsum : null;
+      })()));
+      body.appendChild(chartWrap);
+      body.appendChild(el("h3", "banner-navy lot-head", "拍卖记录"));
+      body.appendChild(el("p", "fine", "横轴是年份，纵轴是人民币。蓝线只连计入均价的成交。红点是异常值，不计入均价，也不在连线上。点线是时间加权均价。"));
       const list = el("ul", "lot-list");
       marked.slice().sort(function (a, b) { return a.lot.date < b.lot.date ? 1 : -1; }).forEach(function (row) {
         const li = document.createElement("li");
@@ -1036,7 +1142,7 @@
     return node;
   }
 
-  function buildChart(rows) {
+  function buildChart(rows, average) {
     const width = 360;
     const height = 236;
     const left = 44;
@@ -1129,18 +1235,31 @@
           return xOf(row).toFixed(1) + "," + yOf(row.lot.cny).toFixed(1);
         }).join(" "),
         fill: "none",
-        stroke: "#2c6a4f",
+        stroke: "#1d4e86",
         "stroke-width": "2",
         "stroke-linejoin": "round",
         "stroke-linecap": "round",
       }));
+    }
+    if (average) {
+      const y = yOf(average);
+      svg.appendChild(svgEl("line", {
+        x1: left, x2: width - right, y1: y.toFixed(1), y2: y.toFixed(1),
+        stroke: "#1d4e86", "stroke-width": "1.4", "stroke-dasharray": "5 4",
+      }));
+      const tag = svgEl("text", {
+        x: left + 6, y: Math.max(top + 12, y - 4).toFixed(1),
+        fill: "#1d4e86", "font-size": "10", "font-family": "Noto Sans SC, sans-serif",
+      });
+      tag.textContent = "时间加权均价";
+      svg.appendChild(tag);
     }
     rows.forEach(function (row) {
       const dot = svgEl("circle", {
         cx: xOf(row).toFixed(1),
         cy: yOf(row.lot.cny).toFixed(1),
         r: "5",
-        fill: row.outlier ? "#8d3b32" : "#2c6a4f",
+        fill: row.outlier ? "#c23b3b" : "#1d4e86",
         stroke: "#f4efe6",
         "stroke-width": "1.5",
       });
