@@ -10,6 +10,11 @@ The page at porcelain/ only reads JSON. Tomorrow's update is:
 That rewrites porcelain/data/YYYY-MM-DD.json, refreshes porcelain/data/index.json,
 and downloads catalogue images into porcelain/images/YYYY-MM-DD/.
 
+It does not rewrite the page shell. porcelain/index.html, porcelain/style.css
+and porcelain/app.js are the oriental H5 (data-skin="oriental"). A daily run
+only swaps JSON and images, so the layout survives the rebuild. assert_page_chrome()
+refuses to publish a digest if that shell has been dropped.
+
 Pass --skip-fetch to rebuild the JSON from the spreadsheet without touching
 the network. Image files already on disk are kept.
 
@@ -1113,6 +1118,24 @@ def summarize(digest: dict) -> None:
         print(" *", note)
 
 
+def assert_page_chrome() -> None:
+    """The oriental H5 is hand-written. Daily runs must not ship without it."""
+    html = (PORCELAIN / "index.html").read_text(encoding="utf-8")
+    css = (PORCELAIN / "style.css").read_text(encoding="utf-8")
+    script = (PORCELAIN / "app.js").read_text(encoding="utf-8")
+    problems = []
+    if 'data-skin="oriental"' not in html:
+        problems.append('index.html lost data-skin="oriental"')
+    if "--qinghua:" not in css:
+        problems.append("style.css lost the qinghua skin")
+    if "即将进行中" not in script or "估价" not in script:
+        problems.append("app.js lost the digest layout")
+    if problems:
+        raise SystemExit(
+            "porcelain page chrome would not survive this rebuild:\n- " + "\n- ".join(problems)
+        )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Build porcelain/data and download images.")
     parser.add_argument("--xlsx", required=True, type=Path)
@@ -1121,6 +1144,8 @@ def main() -> None:
     args = parser.parse_args()
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", args.date):
         raise SystemExit("--date must be YYYY-MM-DD")
+    assert_page_chrome()
+    print("page chrome kept (oriental H5)")
     started = time.time()
     digest = build(args.xlsx, args.date, fetch=not args.skip_fetch)
     write_digest(digest)
