@@ -3,14 +3,74 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#1b1714" />
-    <meta name="description" content="国外中国瓷器拍卖日报。手机上看即将举行和进行中的专场、拍品图片和估价。" />
-    <title>瓷器日报</title>
+    <meta name="theme-color" content="#f7f4ef" />
+    <meta name="description" content="古董捡漏：中国瓷器海外拍卖日报。手机上看专场、拍品图片和估价。" />
+    <title>古董捡漏 · 中国瓷器海外拍卖日报</title>
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="app" class="sheet">
+    <!-- oriental shell: tools/build_porcelain_digest.py does not rewrite this file -->
+    <div class="scenery" aria-hidden="true">
+      <svg class="scenery-bloom scenery-bloom-tr" viewBox="0 0 240 200">
+        <g fill="none" stroke="#8eabbf" stroke-width="1.3" stroke-linecap="round">
+          <path d="M230 12C188 40 168 48 132 86c-22 24-48 34-92 72" />
+          <path d="M156 58c-16 22-22 34-48 52" />
+          <path d="M186 28c22 16 34 36 28 64" />
+        </g>
+        <g transform="translate(168 46)">
+          <g fill="#fbf8f3" stroke="#9eb6c8" stroke-width="0.7">
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" />
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" transform="rotate(72)" />
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" transform="rotate(144)" />
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" transform="rotate(216)" />
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" transform="rotate(288)" />
+          </g>
+          <circle r="2.2" fill="#e4cb8e" />
+        </g>
+        <g transform="translate(118 96) scale(0.8)">
+          <g fill="#e4eef6" stroke="#7f9bb3" stroke-width="0.7">
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" />
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" transform="rotate(72)" />
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" transform="rotate(144)" />
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" transform="rotate(216)" />
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" transform="rotate(288)" />
+          </g>
+          <circle r="2.2" fill="#e4cb8e" />
+        </g>
+        <g transform="translate(206 108) scale(0.62)">
+          <g fill="#fbf8f3" stroke="#9eb6c8" stroke-width="0.7">
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" />
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" transform="rotate(72)" />
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" transform="rotate(144)" />
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" transform="rotate(216)" />
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" transform="rotate(288)" />
+          </g>
+          <circle r="2.2" fill="#e4cb8e" />
+        </g>
+      </svg>
+      <svg class="scenery-bloom scenery-bloom-bl" viewBox="0 0 220 180">
+        <g fill="none" stroke="#8eabbf" stroke-width="1.3" stroke-linecap="round">
+          <path d="M8 20c40 18 58 28 86 62 18 22 28 40 40 78" />
+          <path d="M70 70c18 16 24 28 22 48" />
+        </g>
+        <g transform="translate(78 78) scale(0.85)">
+          <g fill="#fbf8f3" stroke="#9eb6c8" stroke-width="0.7">
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" />
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" transform="rotate(72)" />
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" transform="rotate(144)" />
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" transform="rotate(216)" />
+            <ellipse cx="0" cy="-9" rx="3.6" ry="6" transform="rotate(288)" />
+          </g>
+          <circle r="2.2" fill="#e4cb8e" />
+        </g>
+      </svg>
+      <svg class="scenery-range" viewBox="0 0 800 150" preserveAspectRatio="none">
+        <path d="M0 108C70 78 130 96 190 64 260 28 310 70 380 52 450 34 510 86 590 64 670 42 730 72 800 48V150H0Z" fill="#d5e2dc" />
+        <path d="M0 126C90 96 150 118 230 92 320 62 390 112 490 94 600 74 690 108 800 86V150H0Z" fill="#c5d5ce" />
+      </svg>
+    </div>
+    <div id="app" class="sheet" data-skin="oriental">
       <p class="loading">正在展开今日专场……</p>
     </div>
     <noscript>

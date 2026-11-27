@@ -6,6 +6,8 @@
 
 本地看：在仓库根目录执行 `python3 -m http.server 8080`，打开 `http://localhost:8080/porcelain/`。
 
+版式在 `index.html`、`style.css`、`app.js`（东方雅致）。`tools/build_porcelain_digest.py` 只改 `data/` 和 `images/`，不改这三份，换一天的数据仍是同一套页面。首页按状态（全部 / 即将进行中 / 刚结束）和拍卖行筛选。点专场看拍品列表、拍卖信息和拍卖行。价格行写「估价」。
+
 ## 页面读什么
 
 `data/index.json` 指出最新一天。`data/YYYY-MM-DD.json` 是那天的专场、拍品、价格和图片相对路径。图片在 `images/YYYY-MM-DD/`，是下载后缩小的 JPEG，不外链拍卖行原图。
