@@ -1,0 +1,3021 @@
+{
+  "date": "2026-11-28",
+  "timezone": "Asia/Shanghai",
+  "title": "国外中国瓷器拍卖日报",
+  "intro": "手机上看即将举行和进行中的中国瓷器专场。点一场，看拍品、图片和估价。价格以拍卖行官网为准。",
+  "caveats": [
+    "绝大多数一线拍卖行公开的是估价（Estimate），不是起拍价。页面上的「估价」都不是起拍价。",
+    "有的网站有验证墙或返回 403，那些场次只保留了表格里的文字和官方链接。",
+    "苏富比巴黎 Asian Art / 5000 Years、佳士得 Blaquier-Arrieta、Koller 的开拍时刻，表格里标了待核实。",
+    "刚结束的场次只作对照，不用于跟拍。",
+    "这是跟拍备忘，不构成价值评定或投资建议。",
+    "页面图片来自各拍卖行公开图录，仅供跟拍备忘，不是本站原创。"
+  ],
+  "fetchNotes": [
+    "苏富比 CHINA / 5000 YEARS：接口返回 163 件（含非瓷）",
+    "苏富比 Asian Art / 5000 Years：接口返回 0 件（含非瓷）",
+    "苏富比 Treasures | London（含中国瓷器精品）：接口返回 25 件（含非瓷）",
+    "苏富比 Treasures | Paris（含中国瓷器）：接口返回 41 件（含非瓷）",
+    "Nagel 乾隆仿掐丝珐琅釉瓶：亮点页有图，页面没写估价。",
+    "邦瀚斯拍卖 31820：列表/拍品页匹配到 2/2 件亮点图，已排队下载 2 张。",
+    "邦瀚斯拍卖 32175：列表/拍品页匹配到 0/0 件亮点图，已排队下载 0 张。",
+    "邦瀚斯拍卖 31819：列表/拍品页匹配到 6/6 件亮点图，已排队下载 6 张。",
+    "邦瀚斯 Crosscurrents: Asian Works of Art and Paintings Online：列表或拍品页未能取到图片，链接仍保留。",
+    "Asian Art: Himalaya, China (A219AS)：专场页没有可用封面图。",
+    "Arts d'Asie：专场页没有可用封面图。",
+    "Arts asiatiques et céramiques européennes：专场页没有可用封面图。",
+    "Succession Catherine Laudenbach II（含重要亚洲艺术收藏）：专场页没有可用封面图。",
+    "Fine Asian Art / Asian Art II 等（11月亚洲周）：链接是部门页或首页，没有拿页面头图当专场封面。",
+    "Asian and Islamic Art：链接是部门页或首页，没有拿页面头图当专场封面。",
+    "Fine Asian Works of Art：专场页没打开（HTTPError），没有专场封面。",
+    "Asian Art / Chinese Art：链接是部门页或首页，没有拿页面头图当专场封面。",
+    "Chinese, Japanese & Southeast Asian Art Parts I–II：链接是部门页或首页，没有拿页面头图当专场封面。",
+    "图片下载成功 121 张，失败 2 张。"
+  ],
+  "houses": [
+    {
+      "id": "sothebys",
+      "name": "苏富比",
+      "nameEn": "Sotheby's",
+      "url": "https://www.sothebys.com/en/departments/chinese-works-of-art",
+      "scan": "",
+      "found": "进行中：NY CHINA/5000 YEARS（163件，93件瓷器估价按拍品号复核无变更）；即将：Treasures London（25件，补核 Lot 4/7）；Treasures Paris（41件，较11/26少1件，Lot 128 仍在）；Asian Art/5000 Years Paris（PF2697 直链，图录仍0件，但官方开收标时刻已核清）",
+      "note": "部门页、专场页与 GraphQL 可开。下一场纽约 Chinese Art 约 2027-03-16/17，已出窗口。"
+    },
+    {
+      "id": "christies",
+      "name": "佳士得",
+      "nameEn": "Christie's",
+      "url": "https://www.christies.com/en/departments/chinese-ceramics-and-works-of-art",
+      "scan": "",
+      "found": "即将：Art d'Asie Paris 12/9 10:00 CET（111件图录今日完整上线，主推瓷已补拍品号）。下一港拍约 2027-04。",
+      "note": "【较11/26更新】完整图录已开。Blaquier-Arrieta、JPHY、Voyage of Elegance（沪上文人书画，7–11 Dec 香港）均非中国瓷器专场，未列入。个别过期“Art of China Online Winter Sale”页面未出现在今日官方日历/部门即将拍卖中，不收录。"
+    },
+    {
+      "id": "bonhams",
+      "name": "邦瀚斯",
+      "nameEn": "Bonhams",
+      "url": "https://www.bonhams.com/department/ORI-CHI/chinese-ceramics-and-works-of-art/",
+      "scan": "",
+      "found": "即将：Paris Asian Art 12/10（31819，99件已复核）；Paris 线上 4–11 Dec（31820，【更新】图录已上线128件）；LA Crosscurrents 线上 7–16 Dec（32175，图录仍0件，但开收标时刻已官核）",
+      "note": "走拍品列表/拍品页。同日 Gisèle Croës 与鼻烟壶线上场未作为瓷器专场单列。部门页 /department/16001/chinese-art/ 今日 404，改用 ORI-CHI。日历页曾 500。香港 10/28 专场已移出本表（超出约4周窗口）。"
+    },
+    {
+      "id": "woolley",
+      "name": "Woolley & Wallis",
+      "nameEn": "& Wallis",
+      "url": "https://www.woolleyandwallis.co.uk/departments/asian-art/",
+      "scan": "",
+      "found": "11/10–11刚结束；近4周内未见新瓷器专场（12月为 Modern British Art、British Art Pottery，非中国瓷）",
+      "note": "部门页可开"
+    },
+    {
+      "id": "lyon",
+      "name": "Lyon & Turnbull",
+      "nameEn": "& Turnbull",
+      "url": "https://www.lyonandturnbull.com/departments/asian-art",
+      "scan": "",
+      "found": "11/6刚结束；12/9 为 Islamic & Indian Art，非中国瓷器",
+      "note": "部门/拍卖历页遇 429，与11/26同"
+    },
+    {
+      "id": "dreweatts",
+      "name": "Dreweatts",
+      "nameEn": "",
+      "url": "https://dreweatts.com/departments/asian-art/",
+      "scan": "",
+      "found": "11/11–12刚结束；12/9 Objects of Distinction 非中国瓷器专场",
+      "note": "部门页可开"
+    },
+    {
+      "id": "roseberys",
+      "name": "Roseberys",
+      "nameEn": "",
+      "url": "https://www.roseberys.co.uk/departments/chinese-japanese-south-asian-art",
+      "scan": "",
+      "found": "11/3–4刚结束；部门页仍写每年5月与11月，未见12月新瓷器专场",
+      "note": "部门页可开；即将拍卖子页曾 404"
+    },
+    {
+      "id": "sworders",
+      "name": "Sworders",
+      "nameEn": "",
+      "url": "https://www.sworder.co.uk/",
+      "scan": "",
+      "found": "11/11–12刚结束；检索未见12月新瓷器专场",
+      "note": "官网即将页 202/短页面"
+    },
+    {
+      "id": "chiswick",
+      "name": "Chiswick Auctions",
+      "nameEn": "Auctions",
+      "url": "https://www.chiswickauctions.co.uk/",
+      "scan": "",
+      "found": "11/4–5刚结束；检索未见12月新瓷器专场",
+      "note": "官网即将页 202/短页面"
+    },
+    {
+      "id": "artcurial",
+      "name": "Artcurial",
+      "nameEn": "",
+      "url": "https://www.artcurial.com/en/specialties/asian-art",
+      "scan": "",
+      "found": "即将：Asian Art 12/9 14:30 CET（301 items，多项估价经 Invaluable 复核）",
+      "note": "Gazette 今日 403；以 Invaluable 目录 https://www.invaluable.com/catalog/eab46yi3pe 复核"
+    },
+    {
+      "id": "millon",
+      "name": "Millon",
+      "nameEn": "",
+      "url": "https://www.millon.com/en/our-specialities/asian-art",
+      "scan": "",
+      "found": "即将：Arts d'Asie 12/10 10:00 CET（vente4539）",
+      "note": "专场页可开；逐件估价未完整抓到"
+    },
+    {
+      "id": "tessier",
+      "name": "Tessier & Sarrou",
+      "nameEn": "& Sarrou",
+      "url": "https://www.tessier-sarrou.com/specialite/art-asie",
+      "scan": "",
+      "found": "即将：Arts d'Asie 12/8 14:00 CET Drouot 15厅",
+      "note": "官方专场页已复核；无逐件价"
+    },
+    {
+      "id": "lempertz",
+      "name": "Lempertz",
+      "nameEn": "兰佩兹",
+      "url": "https://www.lempertz.com/en/asian-art.html",
+      "scan": "",
+      "found": "即将：Asian Arts 12/11 11:00 CET 中国段 Lot 345–436（两件瓷估价已复核）；【新增】Auction 1308 Asian Arts Online 12/1 10:00–12/14 17:00 CET，图录 Coming soon",
+      "note": "部门页与拍品页可开"
+    },
+    {
+      "id": "nagel",
+      "name": "Nagel",
+      "nameEn": "纳高",
+      "url": "https://www.auction.de/",
+      "scan": "",
+      "found": "即将：Fine Asian Art 12/8 09:30 CET China II（Lot 374 估价已再核 EUR 100,000–150,000）",
+      "note": "China II PDF 今日重新下载核对"
+    },
+    {
+      "id": "koller",
+      "name": "Koller",
+      "nameEn": "科勒",
+      "url": "https://www.kollerauktionen.ch/en/zuerich/a219as/asian-art_-himalaya_-china-2/",
+      "scan": "",
+      "found": "即将：Asiatica / Himalaya, China 12/8 11:00 CET",
+      "note": "官方专场页今日仅约 2.5 KB（反爬）。Invaluable 交叉：https://www.invaluable.com/catalog/hkppkzzp29"
+    },
+    {
+      "id": "aag",
+      "name": "AAG",
+      "nameEn": "",
+      "url": "https://veilinghuisaag.com/en/departments/chinese-porcelain-and-asian-art/",
+      "scan": "",
+      "found": "近4周未见新中国瓷器专场",
+      "note": "部门页 curl 202/短页面；备用域名连接被断开。检索未见12月档期"
+    },
+    {
+      "id": "zacke",
+      "name": "Galerie Zacke",
+      "nameEn": "Zacke",
+      "url": "https://www.zacke.at/cn/",
+      "scan": "",
+      "found": "即将：Holiday Sale 12/15 11:00 CET（11/26 见约516件含瓷；今日未复核件数）",
+      "note": "官网 403；LA 目录页被拦。时刻沿用11/26已核第三方目录，未死循环"
+    },
+    {
+      "id": "freemans",
+      "name": "Freeman's | Hindman",
+      "nameEn": "",
+      "url": "https://freemansauction.com/departments/asian-art",
+      "scan": "",
+      "found": "近4周未见亚洲/瓷器专场",
+      "note": "官网 429；检索未见12月瓷器专场"
+    },
+    {
+      "id": "doyle",
+      "name": "Doyle",
+      "nameEn": "",
+      "url": "https://www.doyle.com/",
+      "scan": "",
+      "found": "近4周未见亚洲/瓷器专场",
+      "note": "官网页 202/短页面；检索未见12月场"
+    },
+    {
+      "id": "heritage",
+      "name": "Heritage Auctions",
+      "nameEn": "",
+      "url": "https://fineart.ha.com/asian-art/",
+      "scan": "",
+      "found": "近4周未见亚洲瓷器专场",
+      "note": "官网 403；检索未见12月场"
+    },
+    {
+      "id": "igavel",
+      "name": "iGavel",
+      "nameEn": "",
+      "url": "https://www.igavelauctions.com/",
+      "scan": "",
+      "found": "近4周无中国瓷器专场（可见日本武士收藏 Part 3 至 12/4，非中国瓷）",
+      "note": "首页可开；Upcoming 显示 No items found"
+    },
+    {
+      "id": "poly",
+      "name": "保利香港",
+      "nameEn": "",
+      "url": "https://www.polyauctionhk.com/en",
+      "scan": "",
+      "found": "10月秋拍已过；近4周未见新瓷器专场",
+      "note": "首页/秋拍页可开（页面偏短），未见12月瓷器专场"
+    },
+    {
+      "id": "guardian",
+      "name": "嘉德香港",
+      "nameEn": "",
+      "url": "https://www.cguardian.com.hk/en/",
+      "scan": "",
+      "found": "秋拍已过；近4周未见新瓷器专场（检索可见的瓷器场为2026春/五月，已过）",
+      "note": "可开，未见12月瓷器专场"
+    },
+    {
+      "id": "ravenel",
+      "name": "Ravenel",
+      "nameEn": "",
+      "url": "https://www.ravenel.com/en/",
+      "scan": "",
+      "found": "台北 12/4–6 秋拍：现当代 12/6 13:30、书画工艺 12/6 16:30（均为台北时间）；无独立瓷器专场",
+      "note": "「Refined Brushwork: Ink Paintings & Works of Art」中仍可见少量陶瓷（如龙泉一组、德化/青花杯碟），未单列专场。"
+    },
+    {
+      "id": "mainichi",
+      "name": "Mainichi Auction",
+      "nameEn": "Auction 每日拍卖",
+      "url": "https://www.my-auction.co.jp/en/schedule/index",
+      "scan": "",
+      "found": "即将：Sale 871 Asian Antiques / 第871回 古美術 12/18 13:00 JST、12/19 11:00 JST",
+      "note": "官方英日日程已复核时刻；图录仍未上线"
+    },
+    {
+      "id": "liveauctioneers",
+      "name": "LiveAuctioneers",
+      "nameEn": "Fine Arts（经 LiveAuctioneers）",
+      "url": "https://www.liveauctioneers.com/c/chinese/porcelain/162/25849/",
+      "scan": "",
+      "found": "Ueluxe 12/7、Elmridge 12/5、Zacke 12/15、Aetheris Imperial Elegance 12/20；Yongzhen 11/27 已改刚结束；【新增】Aetheris Asian Dynasties 12/9、Legacy of the Orient 12/11（中小行，目录页未完整打开）",
+      "note": "汇集平台，常见 403/约1 KB 挑战页，未死循环。中小行品质需自辨。"
+    },
+    {
+      "id": "invaluable",
+      "name": "Invaluable",
+      "nameEn": "",
+      "url": "https://www.invaluable.com/",
+      "scan": "",
+      "found": "用于交叉核 Artcurial（eab46yi3pe，301件）、Koller（hkppkzzp29）等",
+      "note": "汇集平台。Gazette 被拦后的主要备援。Zacke 搜索页今日无可用目录。"
+    },
+    {
+      "id": "saleroom",
+      "name": "The Saleroom",
+      "nameEn": "",
+      "url": "https://www.the-saleroom.com/en-gb/for-sale/asian-art/chinese-works-of-art",
+      "scan": "",
+      "found": "英国地区行多已刚结束；用于结果/跟盘",
+      "note": "本次打开 405，未死循环"
+    },
+    {
+      "id": "bidsquare",
+      "name": "Bidsquare",
+      "nameEn": "",
+      "url": "https://www.bidsquare.com/",
+      "scan": "",
+      "found": "本次未发现高质量独立中国瓷器专场",
+      "note": "首页可见多为杂项/收藏品场"
+    },
+    {
+      "id": "drouot",
+      "name": "Drouot",
+      "nameEn": "",
+      "url": "https://drouot.com/en",
+      "scan": "",
+      "found": "Tessier 12/8；Beaussant Lefèvre Laudenbach II 12/11（Lot 483 等已用官方 PDF 再核）；Thierry de Maigret 12/11 两场段（11:00 / 13:30）",
+      "note": "汇集/巴黎拍卖大厦。Gazette 今日多页 403。Printemps Asiatique 站点 SSL 失败，未采用其日历。一律以各行官网/图录为准。"
+    },
+    {
+      "id": "aguttes",
+      "name": "Aguttes",
+      "nameEn": "",
+      "url": "https://www.aguttes.com/",
+      "scan": "补充发现",
+      "found": "Arts d'Asie",
+      "note": "【较11/26更新】11/26记为14:30 CET。今日官方专场页标题为 4 décembre 2026 à 13:30，但同站新闻稿《Qianlong Imperial Vase: An Exceptional Discovery》仍写 2:30 p.m.。二者冲突，跟拍请再核开拍当天官网。估价已改由官方新闻稿复核（Gazette 专文今日 403）。拍品号仍缺。亚洲综合场，非纯瓷器专场。新闻稿：https://www.aguttes.com/en/actualite/vase-imperial-qianlong-decouverte-vente-encheres"
+    },
+    {
+      "id": "elmridge",
+      "name": "Elmridge",
+      "nameEn": "Auctions（经 LiveAuctioneers）",
+      "url": "https://www.liveauctioneers.com/",
+      "scan": "补充发现",
+      "found": "Fine Asian Antiques & Asian Art Sale",
+      "note": "2026-11-28：LiveAuctioneers 目录页返回约1 KB挑战页，未能逐件复核。日期来自平台公开目录标题（与11/26一致）。中小行，品质需自辨。"
+    },
+    {
+      "id": "ueluxe",
+      "name": "Ueluxe",
+      "nameEn": "Art LLC（经 LiveAuctioneers）",
+      "url": "https://www.liveauctioneers.com/",
+      "scan": "补充发现",
+      "found": "Chinese Antiques (Furniture & Fine Arts)",
+      "note": "2026-11-28：LA 目录页被拦，日期与11/26一致（平台公开目录标题）。中小行，品质需自辨。"
+    },
+    {
+      "id": "thierry-de-maigret",
+      "name": "Thierry",
+      "nameEn": "de Maigret",
+      "url": "https://www.thierrydemaigret.com/",
+      "scan": "补充发现",
+      "found": "Arts asiatiques et céramiques européennes",
+      "note": "2026-11-28 复核：官方说明为两场段，亚洲/陶瓷在 13:30 CET（与11/26一致）。混合场，不是独立中国瓷器专场。逐件价未完整抓到。"
+    },
+    {
+      "id": "beaussant-lef-vre-associ-s",
+      "name": "Beaussant",
+      "nameEn": "Lefèvre & Associés",
+      "url": "https://www.beaussantlefevre.com/",
+      "scan": "补充发现",
+      "found": "Succession Catherine Laudenbach II（含重要亚洲艺术收藏）",
+      "note": "【较11/26更新】今日下载官方图录 PDF 复核估价与 14:00 开拍（https://cdn.drouot.com/d/catalogue?path=92/182481/782-Complet_BL_11_12_2026.pdf）。Gazette 今日 403。遗产综合场，不是独立瓷器专场，但含高估价雍正官窑瓷。Lot 483 拍品页：https://drouot.com/en/l/36067875-china-yongzheng-period-1723-1735-large-four-lobed-gourd"
+    }
+  ],
+  "sales": [
+    {
+      "id": "sothebys-1",
+      "houseId": "sothebys",
+      "status": "live",
+      "title": "CHINA / 5000 YEARS",
+      "whenShanghai": "2026-11-21 06:15 起可出价；结标约 2026-12-03 22:30 起（逐件错峰）",
+      "whenLocal": "2026-11-20 17:15 EST 起可出价；starts to close 2026-12-03 09:30 EST / 2026-12-03T14:30Z（America/New_York）",
+      "city": "纽约 / 线上",
+      "summary": "宋元明清瓷器杂项线上专场：龙泉、青白、青花、单色釉、粉彩等",
+      "period": "汉–民国（以宋元明清瓷器为主）",
+      "lotSpan": "共163件（官网 totalLotCount 及 GraphQL 2026-11-28 复核，与11/26一致）；瓷器/陶瓷约93件（本表筛入，逐件估价已按拍品号复核无变更）",
+      "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3",
+      "houseUrl": "https://www.sothebys.com/en/departments/chinese-works-of-art",
+      "note": "2026-11-28 复核：专场仍为 Opened；GraphQL/专场页 totalLotCount=163，与11/26图录及逐件估价完全一致（第三方曾写159件，与官方不符，以官网为准）。价格均为公开估价非起拍价；逐件约1分钟间隔结标。拍品明细见「苏富比NY瓷器拍品」工作表。",
+      "price": {
+        "kind": "estimate",
+        "currency": "USD",
+        "low": 300,
+        "high": 15000,
+        "text": "估价 瓷器相关约 USD 300–15,000"
+      },
+      "cover": "images/2026-11-28/sothebys-1/lot-001.jpg",
+      "lots": [
+        {
+          "lot": "1",
+          "title": "Two molded 'Longquan' celadon-glazed 'fish' dishes, Southern Song dynasty",
+          "keywords": "南宋 · 龙泉 · 青釉 · 盘",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/two-molded-longquan-celadon-glazed-fish-dishes",
+          "image": "images/2026-11-28/sothebys-1/lot-001.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "2",
+          "title": "A carved 'Longquan' celadon-glazed 'twin fish' dish, Southern Song dynasty",
+          "keywords": "南宋 · 龙泉 · 青釉 · 盘",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 800,
+            "high": 1200,
+            "text": "估价 USD 800–1,200"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-carved-longquan-celadon-glazed-twin-fish-dish",
+          "image": "images/2026-11-28/sothebys-1/lot-002.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "3",
+          "title": "A molded 'Longquan' celadon-glazed petal-lobed bowl, Yuan dynasty",
+          "keywords": "龙泉 · 青釉 · 元 · 碗",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 800,
+            "high": 1200,
+            "text": "估价 USD 800–1,200"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-molded-longquan-celadon-glazed-petal-lobed-bowl",
+          "image": "images/2026-11-28/sothebys-1/lot-003.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "4",
+          "title": "A group of three 'Longquan' celadon-glazed bowls, Southern Song / Yuan dynasty",
+          "keywords": "南宋 · 龙泉 · 青釉 · 元 · 碗",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 800,
+            "high": 1200,
+            "text": "估价 USD 800–1,200"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-group-of-three-longquan-celadon-glazed-bowls",
+          "image": "images/2026-11-28/sothebys-1/lot-004.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "5",
+          "title": "A 'Longquan' celadon-glazed tripod cup (Jue), Ming dynasty",
+          "keywords": "龙泉 · 青釉 · 明 · 杯",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-longquan-celadon-glazed-tripod-cup-jue-ming",
+          "image": "images/2026-11-28/sothebys-1/lot-005.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "6",
+          "title": "Three 'Longquan' celadon-glazed ribbed jarlets, Southern Song / Yuan dynasty",
+          "keywords": "南宋 · 龙泉 · 青釉 · 元 · 小罐",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 800,
+            "high": 1200,
+            "text": "估价 USD 800–1,200"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/three-longquan-celadon-glazed-ribbed-jarlets",
+          "image": "images/2026-11-28/sothebys-1/lot-006.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "7",
+          "title": "A 'Longquan' celadon-glazed ribbed tripod censer, Southern Song / Yuan dynasty",
+          "keywords": "南宋 · 龙泉 · 青釉 · 元 · 炉",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 400,
+            "high": 600,
+            "text": "估价 USD 400–600"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-longquan-celadon-glazed-ribbed-tripod-censer",
+          "image": "images/2026-11-28/sothebys-1/lot-007.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "8",
+          "title": "A small 'Longquan' celadon-glazed handled incense burner, Yuan dynasty",
+          "keywords": "龙泉 · 青釉 · 元",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 300,
+            "high": 500,
+            "text": "估价 USD 300–500"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-small-longquan-celadon-glazed-handled-incense",
+          "image": "images/2026-11-28/sothebys-1/lot-008.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "9",
+          "title": "A Qingbai stoneware model of a granary, Southern Song / Yuan dynasty",
+          "keywords": "南宋 · 青白 · 元",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-qingbai-stoneware-model-of-a-granary-southern",
+          "image": "images/2026-11-28/sothebys-1/lot-009.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "10",
+          "title": "A Qingbai lobed ewer and cover, Southern Song / Yuan dynasty",
+          "keywords": "南宋 · 青白 · 元 · 壶",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 3000,
+            "high": 5000,
+            "text": "估价 USD 3,000–5,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-qingbai-lobed-ewer-and-cover-southern-song-yuan",
+          "image": "images/2026-11-28/sothebys-1/lot-010.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "11",
+          "title": "A molded Qingbai 'lotus' vase, Southern Song / Yuan dynasty",
+          "keywords": "南宋 · 青白 · 元 · 瓶",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 400,
+            "high": 600,
+            "text": "估价 USD 400–600"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-molded-qingbai-lotus-vase-southern-song-yuan",
+          "image": "images/2026-11-28/sothebys-1/lot-011.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "12",
+          "title": "Two Sichuan pottery cockerel figures, Eastern Han dynasty",
+          "keywords": "汉 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 3000,
+            "high": 5000,
+            "text": "估价 USD 3,000–5,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/two-sichuan-pottery-cockerel-figures-eastern-han",
+          "image": "images/2026-11-28/sothebys-1/lot-012.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "13",
+          "title": "A painted pottery figure of a soldier, Northern Wei dynasty",
+          "keywords": "俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 4000,
+            "high": 6000,
+            "text": "估价 USD 4,000–6,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-painted-pottery-figure-of-a-soldier-northern-wei",
+          "image": "images/2026-11-28/sothebys-1/lot-013.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "14",
+          "title": "An olive-glazed figure of a groom, Sui dynasty",
+          "keywords": "俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 1000,
+            "high": 1500,
+            "text": "估价 USD 1,000–1,500"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/an-olive-glazed-figure-of-a-groom-sui-dynasty",
+          "image": "images/2026-11-28/sothebys-1/lot-014.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "15",
+          "title": "A painted pottery figure of an earth spirit, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2500,
+            "high": 3500,
+            "text": "估价 USD 2,500–3,500"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-painted-pottery-figure-of-an-earth-spirit-tang",
+          "image": "images/2026-11-28/sothebys-1/lot-015.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "16",
+          "title": "Five Changsha glazed pottery figural weights, Tang dynasty or later",
+          "keywords": "唐",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 1000,
+            "high": 1500,
+            "text": "估价 USD 1,000–1,500"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/five-changsha-glazed-pottery-figural-weights-tang",
+          "image": "images/2026-11-28/sothebys-1/lot-016.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "17",
+          "title": "A copper-red-glazed bowl, Seal mark and period of Qianlong",
+          "keywords": "乾隆 · 碗",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 USD 6,000–8,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-copper-red-glazed-bowl-seal-mark-and-period-of",
+          "image": "images/2026-11-28/sothebys-1/lot-017.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "18",
+          "title": "A copper-red-glazed bottle vase, Qing dynasty, 18th century",
+          "keywords": "清 · 瓶",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 USD 6,000–8,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-copper-red-glazed-bottle-vase-qing-dynasty-18th",
+          "image": "images/2026-11-28/sothebys-1/lot-018.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "19",
+          "title": "A copper-red glazed bottle vase, Qing dynasty, 19th century",
+          "keywords": "清 · 瓶",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 3000,
+            "high": 5000,
+            "text": "估价 USD 3,000–5,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-copper-red-glazed-bottle-vase-qing-dynasty-19th",
+          "image": "images/2026-11-28/sothebys-1/lot-019.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "20",
+          "title": "A teadust-glazed bottle vase, Qing dynasty, 19th century",
+          "keywords": "清 · 瓶",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 4000,
+            "high": 6000,
+            "text": "估价 USD 4,000–6,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-teadust-glazed-bottle-vase-qing-dynasty-19th",
+          "image": "images/2026-11-28/sothebys-1/lot-020.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "21",
+          "title": "A coral-red-glazed vase, Qing dynasty, 18th / 19th century",
+          "keywords": "清 · 瓶",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 USD 6,000–8,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-coral-red-glazed-vase-qing-dynasty-18th-19th",
+          "image": "images/2026-11-28/sothebys-1/lot-021.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "22",
+          "title": "A green-glazed bowl, Mark and period of Guangxu",
+          "keywords": "光绪 · 碗",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 3000,
+            "high": 5000,
+            "text": "估价 USD 3,000–5,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-green-glazed-bowl-mark-and-period-of-guangxu",
+          "image": "images/2026-11-28/sothebys-1/lot-022.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "23",
+          "title": "A coral-ground gilt-decorated 'dragon' bowl, Mark and period of Guangxu",
+          "keywords": "光绪 · 碗",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 3000,
+            "high": 5000,
+            "text": "估价 USD 3,000–5,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-coral-ground-gilt-decorated-dragon-bowl-mark-and",
+          "image": "images/2026-11-28/sothebys-1/lot-023.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "25",
+          "title": "A gilt-decorated powder-blue-ground 'sanduo' cup, 19th / 20th century",
+          "keywords": "杯",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-gilt-decorated-powder-blue-ground-sanduo-cup",
+          "image": "images/2026-11-28/sothebys-1/lot-025.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "26",
+          "title": "A large blue and white ‘floral’ teapot and cover, Qing dynasty, Kangxi period",
+          "keywords": "青花 · 康熙 · 清",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 3000,
+            "high": 5000,
+            "text": "估价 USD 3,000–5,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-large-blue-and-white-floral-teapot-and-cover",
+          "image": "images/2026-11-28/sothebys-1/lot-026.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "27",
+          "title": "A group of three blue and white oviform jars and covers, Qing dynasty, Kangxi period",
+          "keywords": "青花 · 康熙 · 清 · 罐",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 USD 6,000–8,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-group-of-three-blue-and-white-oviform-jars-and",
+          "image": "images/2026-11-28/sothebys-1/lot-027.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "28",
+          "title": "A blue and white ‘deer and crane’ baluster jar, Qing dynasty, Kangxi period",
+          "keywords": "青花 · 康熙 · 清 · 罐",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 4000,
+            "high": 6000,
+            "text": "估价 USD 4,000–6,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-blue-and-white-deer-and-crane-baluster-jar-qing",
+          "image": "images/2026-11-28/sothebys-1/lot-028.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "29",
+          "title": "A large blue and white 'flowers and birds' jar, Qing dynasty, 18th / 19th century",
+          "keywords": "青花 · 清 · 罐",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 5000,
+            "high": 7000,
+            "text": "估价 USD 5,000–7,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-large-blue-and-white-flowers-and-birds-jar-qing",
+          "image": "images/2026-11-28/sothebys-1/lot-029.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "30",
+          "title": "A pair of blue and white ‘lotus’ bowls, Marks and period of Guangxu",
+          "keywords": "青花 · 光绪 · 碗",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 3000,
+            "high": 5000,
+            "text": "估价 USD 3,000–5,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-pair-of-blue-and-white-lotus-bowls-marks-and",
+          "image": "images/2026-11-28/sothebys-1/lot-030.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "31",
+          "title": "A blue and white 'fisherman' dish, Qing dynasty, 19th century",
+          "keywords": "青花 · 清 · 盘",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 800,
+            "high": 1200,
+            "text": "估价 USD 800–1,200"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-blue-and-white-fisherman-dish-qing-dynasty-19th",
+          "image": "images/2026-11-28/sothebys-1/lot-031.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "32",
+          "title": "A blue and white ‘scholars’ jar, Ming dynasty, Jiajing / Wanli period",
+          "keywords": "青花 · 明 · 罐",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 USD 6,000–8,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-blue-and-white-scholars-jar-ming-dynasty-jiajing",
+          "image": "images/2026-11-28/sothebys-1/lot-032.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "33",
+          "title": "A blue and white circular inkstone, Ming dynasty",
+          "keywords": "青花 · 明",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-blue-and-white-circular-inkstone-ming-dynasty",
+          "image": "images/2026-11-28/sothebys-1/lot-033.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "34",
+          "title": "A molded blue and white 'floral' dish, Ming dynasty",
+          "keywords": "青花 · 明 · 盘",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 1000,
+            "high": 1500,
+            "text": "估价 USD 1,000–1,500"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-molded-blue-and-white-floral-dish-ming-dynasty",
+          "image": "images/2026-11-28/sothebys-1/lot-034.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "35",
+          "title": "A doucai 'carp’ dish, Qing dynasty, 18th century",
+          "keywords": "清 · 盘",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-doucai-carp-dish-qing-dynasty-18th-century",
+          "image": "images/2026-11-28/sothebys-1/lot-035.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "36",
+          "title": "An iron-red decorated 'bats' bowl, Mark and period of Daoguang",
+          "keywords": "道光 · 碗",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 3000,
+            "high": 5000,
+            "text": "估价 USD 3,000–5,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/an-iron-red-decorated-bats-bowl-mark-and-period-of",
+          "image": "images/2026-11-28/sothebys-1/lot-036.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "37",
+          "title": "An inscribed famille-verte 'floral' wine cup, Qing dynasty, Kangxi period",
+          "keywords": "五彩 · 康熙 · 清 · 杯",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 800,
+            "high": 1200,
+            "text": "估价 USD 800–1,200"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/an-inscribed-famille-verte-floral-wine-cup-qing",
+          "image": "images/2026-11-28/sothebys-1/lot-037.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "38",
+          "title": "A wucai 'figural' beaker vase, Qing dynasty, 19th century",
+          "keywords": "清 · 瓶",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-wucai-figural-beaker-vase-qing-dynasty-19th",
+          "image": "images/2026-11-28/sothebys-1/lot-038.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "39",
+          "title": "A group of yellow-ground famille-rose 'longevity' wares, Late 19th / early 20th century",
+          "keywords": "粉彩",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 USD 6,000–8,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-group-of-yellow-ground-famille-rose-longevity",
+          "image": "images/2026-11-28/sothebys-1/lot-039.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "40",
+          "title": "A large famille-rose 'Cleaning the paulownia tree' dish, Republic period",
+          "keywords": "粉彩 · 民国 · 盘",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 USD 6,000–8,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-large-famille-rose-cleaning-the-paulownia-tree",
+          "image": "images/2026-11-28/sothebys-1/lot-040.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "41",
+          "title": "A famille-rose 'floral' cup, cover and stand, Republic period, dated to the 27th year, corresponding to 1938",
+          "keywords": "粉彩 · 民国 · 杯",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-famille-rose-floral-cup-cover-and-stand-republic",
+          "image": "images/2026-11-28/sothebys-1/lot-041.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "42",
+          "title": "A famille rose 'cricket' snuff bottle, Mark and period of Daoguang",
+          "keywords": "粉彩 · 道光",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 USD 6,000–8,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-famille-rose-cricket-snuff-bottle-mark-and",
+          "image": "images/2026-11-28/sothebys-1/lot-042.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "57",
+          "title": "A pair of pink Beijing glass 'magpies and prunus' bowls, Qing dynasty, 19th century",
+          "keywords": "清 · 碗",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 3000,
+            "high": 5000,
+            "text": "估价 USD 3,000–5,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-pair-of-pink-beijing-glass-magpies-and-prunus",
+          "image": "images/2026-11-28/sothebys-1/lot-057.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "81",
+          "title": "A 'Yaozhou' celadon-glazed bowl, Northern Song dynasty",
+          "keywords": "北宋 · 青釉 · 耀州 · 碗",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 3000,
+            "high": 5000,
+            "text": "估价 USD 3,000–5,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-yaozhou-celadon-glazed-bowl-northern-song",
+          "image": "images/2026-11-28/sothebys-1/lot-081.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "82",
+          "title": "A small 'Jun' blue-glazed dish, Northern Song dynasty",
+          "keywords": "北宋 · 盘",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 5000,
+            "high": 7000,
+            "text": "估价 USD 5,000–7,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-small-jun-blue-glazed-dish-northern-song-dynasty",
+          "image": "images/2026-11-28/sothebys-1/lot-082.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "83",
+          "title": "Three molded 'Longquan' celadon-glazed 'twin fish' dishes, Southern Song dynasty",
+          "keywords": "南宋 · 龙泉 · 青釉 · 盘",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/three-molded-longquan-celadon-glazed-twin-fish",
+          "image": "images/2026-11-28/sothebys-1/lot-083.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "84",
+          "title": "A group of eight dishes, Song / Yuan dynasty",
+          "keywords": "元 · 盘",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 300,
+            "high": 500,
+            "text": "估价 USD 300–500"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-group-of-eight-dishes-song-yuan-dynasty",
+          "image": "images/2026-11-28/sothebys-1/lot-084.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "85",
+          "title": "A group of four 'Longquan' celadon-glazed wares, Southern Song / Yuan dynasty",
+          "keywords": "南宋 · 龙泉 · 青釉 · 元",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 800,
+            "high": 1200,
+            "text": "估价 USD 800–1,200"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-group-of-four-longquan-celadon-glazed-wares",
+          "image": "images/2026-11-28/sothebys-1/lot-085.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "86",
+          "title": "Three small 'Longquan' celadon-glazed bird feeders, Southern Song / Yuan dynasty",
+          "keywords": "南宋 · 龙泉 · 青釉 · 元",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 500,
+            "high": 700,
+            "text": "估价 USD 500–700"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/three-small-longquan-celadon-glazed-bird-feeders",
+          "image": "images/2026-11-28/sothebys-1/lot-086.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "87",
+          "title": "A group of twenty-two 'Longquan' celadon-glazed jarlets, Southern Song / Yuan dynasty",
+          "keywords": "南宋 · 龙泉 · 青釉 · 元 · 小罐",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-group-of-twenty-two-longquan-celadon-glazed",
+          "image": "images/2026-11-28/sothebys-1/lot-087.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "88",
+          "title": "A 'Xing'-type white-glazed shallow dish, Tang dynasty / Five Dynasties",
+          "keywords": "唐 · 盘",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-xing-type-white-glazed-shallow-dish-tang-dynasty",
+          "image": "images/2026-11-28/sothebys-1/lot-088.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "89",
+          "title": "A 'Xing'-type white-glazed shallow dish, Tang dynasty / Five Dynasties",
+          "keywords": "唐 · 盘",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-xing-type-white-glazed-shallow-dish-tang-dynasty-2",
+          "image": "images/2026-11-28/sothebys-1/lot-089.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "90",
+          "title": "A 'Xing'-type white-glazed shallow dish, Tang dynasty / Five Dynasties",
+          "keywords": "唐 · 盘",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-xing-type-white-glazed-shallow-dish-tang-dynasty-3",
+          "image": "images/2026-11-28/sothebys-1/lot-090.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "91",
+          "title": "A 'Xing'-type white-glazed dish, Tang dynasty",
+          "keywords": "唐 · 盘",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-xing-type-white-glazed-dish-tang-dynasty",
+          "image": "images/2026-11-28/sothebys-1/lot-091.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "92",
+          "title": "A Qingbai handled jar, Southern Song dynasty",
+          "keywords": "南宋 · 青白 · 罐",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-qingbai-handled-jar-southern-song-dynasty",
+          "image": "images/2026-11-28/sothebys-1/lot-092.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "93",
+          "title": "A small carved Qingbai conical bowl, Southern Song dynasty",
+          "keywords": "南宋 · 青白 · 碗",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 300,
+            "high": 500,
+            "text": "估价 USD 300–500"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-small-carved-qingbai-conical-bowl-southern-song",
+          "image": "images/2026-11-28/sothebys-1/lot-093.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "94",
+          "title": "A 'Yue' celadon-glazed model of an animal pen, Western Jin dynasty",
+          "keywords": "青釉",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 3000,
+            "high": 5000,
+            "text": "估价 USD 3,000–5,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-yue-celadon-glazed-model-of-an-animal-pen",
+          "image": "images/2026-11-28/sothebys-1/lot-094.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "95",
+          "title": "An olive-glazed stoneware handled jar (Hu), Western Han dynasty",
+          "keywords": "汉 · 罐",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 1000,
+            "high": 1500,
+            "text": "估价 USD 1,000–1,500"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/an-olive-glazed-stoneware-handled-jar-hu-western",
+          "image": "images/2026-11-28/sothebys-1/lot-095.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "96",
+          "title": "An impressed pottery jar, Han dynasty",
+          "keywords": "汉 · 罐",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 1000,
+            "high": 1500,
+            "text": "估价 USD 1,000–1,500"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/an-impressed-pottery-jar-han-dynasty",
+          "image": "images/2026-11-28/sothebys-1/lot-096.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "97",
+          "title": "A green and amber-glazed pottery hu-form vase, Han dynasty",
+          "keywords": "汉 · 瓶",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 4000,
+            "high": 6000,
+            "text": "估价 USD 4,000–6,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-green-and-amber-glazed-pottery-hu-form-vase-han",
+          "image": "images/2026-11-28/sothebys-1/lot-097.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "98",
+          "title": "A green-glazed pottery brush pot, Ming dynasty",
+          "keywords": "明",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 600,
+            "high": 800,
+            "text": "估价 USD 600–800"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-green-glazed-pottery-brush-pot-ming-dynasty",
+          "image": "images/2026-11-28/sothebys-1/lot-098.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "99",
+          "title": "A large 'Martaban'-type brown-glazed jar, China or Southeast Asia, 17th / 18th century",
+          "keywords": "罐",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-large-martaban-type-brown-glazed-jar-china-or",
+          "image": "images/2026-11-28/sothebys-1/lot-099.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "100",
+          "title": "An inlaid celadon-glazed lobed 'chrysanthemum' cup and stand, Korea, Goryeo dynasty",
+          "keywords": "青釉 · 杯",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 USD 6,000–8,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/an-inlaid-celadon-glazed-lobed-chrysanthemum-cup",
+          "image": "images/2026-11-28/sothebys-1/lot-100.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "101",
+          "title": "A Gennai ware sancai-glazed 'Shoulao' square dish, Edo period, 18th / 19th century",
+          "keywords": "三彩 · 盘",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 800,
+            "high": 1200,
+            "text": "估价 USD 800–1,200"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-gennai-ware-sancai-glazed-shoulao-square-dish",
+          "image": "images/2026-11-28/sothebys-1/lot-101.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "102",
+          "title": "A gray pottery model of a farmhouse, Han dynasty",
+          "keywords": "汉",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 USD 6,000–8,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-gray-pottery-model-of-a-farmhouse-han-dynasty",
+          "image": "images/2026-11-28/sothebys-1/lot-102.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "103",
+          "title": "A green-glazed pottery figure of a dog, Eastern Han dynasty",
+          "keywords": "汉 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-green-glazed-pottery-figure-of-a-dog-eastern-han",
+          "image": "images/2026-11-28/sothebys-1/lot-103.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "104",
+          "title": "A painted pottery horse head, Han dynasty",
+          "keywords": "汉",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 300,
+            "high": 500,
+            "text": "估价 USD 300–500"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-painted-pottery-horse-head-han-dynasty",
+          "image": "images/2026-11-28/sothebys-1/lot-104.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "105",
+          "title": "A painted pottery figure of a kneeling court lady, Han dynasty",
+          "keywords": "汉 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 800,
+            "high": 1200,
+            "text": "估价 USD 800–1,200"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-painted-pottery-figure-of-a-kneeling-court-lady",
+          "image": "images/2026-11-28/sothebys-1/lot-105.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "106",
+          "title": "Two grey painted pottery figures of a boy and a girl, Western Han dynasty",
+          "keywords": "汉 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/two-grey-painted-pottery-figures-of-a-boy-and-a",
+          "image": "images/2026-11-28/sothebys-1/lot-106.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "107",
+          "title": "A painted pottery figure of a warrior, Northern Qi dynasty",
+          "keywords": "俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 4000,
+            "high": 6000,
+            "text": "估价 USD 4,000–6,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-painted-pottery-figure-of-a-warrior-northern-qi",
+          "image": "images/2026-11-28/sothebys-1/lot-107.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "108",
+          "title": "A painted pottery figure of a lokapala, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-painted-pottery-figure-of-a-lokapala-tang",
+          "image": "images/2026-11-28/sothebys-1/lot-108.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "109",
+          "title": "A large sancai-glazed pottery figure of a foreign groom, Tang dynasty",
+          "keywords": "三彩 · 唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 4000,
+            "high": 6000,
+            "text": "估价 USD 4,000–6,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-large-sancai-glazed-pottery-figure-of-a-foreign",
+          "image": "images/2026-11-28/sothebys-1/lot-109.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "110",
+          "title": "Two painted pottery figures of court ladies, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 4000,
+            "high": 6000,
+            "text": "估价 USD 4,000–6,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/two-painted-pottery-figures-of-court-ladies-tang",
+          "image": "images/2026-11-28/sothebys-1/lot-110.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "111",
+          "title": "A painted pottery figure of a court lady, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 5000,
+            "high": 7000,
+            "text": "估价 USD 5,000–7,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-painted-pottery-figure-of-a-court-lady-tang",
+          "image": "images/2026-11-28/sothebys-1/lot-111.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "112",
+          "title": "A pair of painted pottery figures of court ladies, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 4000,
+            "high": 6000,
+            "text": "估价 USD 4,000–6,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-pair-of-painted-pottery-figures-of-court-ladies",
+          "image": "images/2026-11-28/sothebys-1/lot-112.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "113",
+          "title": "A large gilt-decorated and painted pottery figure of a camel, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 8000,
+            "high": 12000,
+            "text": "估价 USD 8,000–12,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-large-gilt-decorated-and-painted-pottery-figure",
+          "image": "images/2026-11-28/sothebys-1/lot-113.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "114",
+          "title": "A painted pottery figure of a camel, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-painted-pottery-figure-of-a-camel-tang-dynasty",
+          "image": "images/2026-11-28/sothebys-1/lot-114.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "115",
+          "title": "A group of three small painted pottery equestrian figures, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 8000,
+            "high": 12000,
+            "text": "估价 USD 8,000–12,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-group-of-three-small-painted-pottery-equestrian",
+          "image": "images/2026-11-28/sothebys-1/lot-115.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "116",
+          "title": "A pair of painted pottery mounted equestrian figures, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 10000,
+            "high": 15000,
+            "text": "估价 USD 10,000–15,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-pair-of-painted-pottery-mounted-equestrian",
+          "image": "images/2026-11-28/sothebys-1/lot-116.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "117",
+          "title": "A painted pottery figure of an equestrian, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 1500,
+            "high": 2500,
+            "text": "估价 USD 1,500–2,500"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-painted-pottery-figure-of-an-equestrian-tang",
+          "image": "images/2026-11-28/sothebys-1/lot-117.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "118",
+          "title": "Two painted pottery figures of horses, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 USD 6,000–8,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/two-painted-pottery-figures-of-horses-tang-dynasty",
+          "image": "images/2026-11-28/sothebys-1/lot-118.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "119",
+          "title": "Three painted pottery figures of horses, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 1000,
+            "high": 1500,
+            "text": "估价 USD 1,000–1,500"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/three-painted-pottery-figures-of-horses-tang",
+          "image": "images/2026-11-28/sothebys-1/lot-119.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "120",
+          "title": "A painted gray pottery figure of an ox, Eastern Wei dynasty",
+          "keywords": "俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 USD 6,000–8,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-painted-gray-pottery-figure-of-an-ox-eastern-wei",
+          "image": "images/2026-11-28/sothebys-1/lot-120.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "121",
+          "title": "A pair of painted pottery figures of oxen, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 USD 6,000–8,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-pair-of-painted-pottery-figures-of-oxen-tang",
+          "image": "images/2026-11-28/sothebys-1/lot-121.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "122",
+          "title": "A painted pottery figure of a foreign groom, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 USD 6,000–8,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-painted-pottery-figure-of-a-foreign-groom-tang",
+          "image": "images/2026-11-28/sothebys-1/lot-122.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "123",
+          "title": "A straw-glazed pottery figure of a court lady, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 1000,
+            "high": 1500,
+            "text": "估价 USD 1,000–1,500"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-straw-glazed-pottery-figure-of-a-court-lady-tang",
+          "image": "images/2026-11-28/sothebys-1/lot-123.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "124",
+          "title": "A painted pottery figure of a solider or guardian, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 1500,
+            "high": 2000,
+            "text": "估价 USD 1,500–2,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-painted-pottery-figure-of-a-solider-or-guardian",
+          "image": "images/2026-11-28/sothebys-1/lot-124.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "125",
+          "title": "A sancai-glazed figure of a foreign groom, Tang dynasty",
+          "keywords": "三彩 · 唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-sancai-glazed-figure-of-a-foreign-groom-tang",
+          "image": "images/2026-11-28/sothebys-1/lot-125.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "126",
+          "title": "A painted pottery figure of a dwarf, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-painted-pottery-figure-of-a-dwarf-tang-dynasty-2",
+          "image": "images/2026-11-28/sothebys-1/lot-126.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "127",
+          "title": "A straw-glazed pottery figure of a dwarf, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 USD 2,000–3,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-straw-glazed-pottery-figure-of-a-dwarf-tang",
+          "image": "images/2026-11-28/sothebys-1/lot-127.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "128",
+          "title": "A painted pottery figure of an earth spirit, Tang dynasty",
+          "keywords": "唐 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 1500,
+            "high": 2000,
+            "text": "估价 USD 1,500–2,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-painted-pottery-figure-of-an-earth-spirit-tang-2",
+          "image": "images/2026-11-28/sothebys-1/lot-128.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "129",
+          "title": "A set of twelve sancai-glazed 'Zodiac' figures, Ming dynasty",
+          "keywords": "三彩 · 明 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 8000,
+            "high": 12000,
+            "text": "估价 USD 8,000–12,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-set-of-twelve-sancai-glazed-zodiac-figures-ming",
+          "image": "images/2026-11-28/sothebys-1/lot-129.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "130",
+          "title": "A group of twelve painted pottery 'Zodiac' figures and a figure of an official, Ming dynasty",
+          "keywords": "明 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 USD 6,000–8,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-group-of-twelve-painted-pottery-zodiac-figures",
+          "image": "images/2026-11-28/sothebys-1/lot-130.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "131",
+          "title": "A group of ten painted gray pottery figures of attendants, Ming dynasty",
+          "keywords": "明 · 俑",
+          "period": "",
+          "price": {
+            "kind": "estimate",
+            "currency": "USD",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 USD 6,000–8,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/china-5000-years-3/a-group-of-ten-painted-gray-pottery-figures-of",
+          "image": "images/2026-11-28/sothebys-1/lot-131.jpg",
+          "imageNote": ""
+        }
+      ]
+    },
+    {
+      "id": "lempertz-2",
+      "houseId": "lempertz",
+      "status": "upcoming",
+      "title": "Asian Arts Online（Auction 1308）",
+      "whenShanghai": "2026-12-01 17:00 起可出价；结标约 2026-12-15 00:00（以官网为准）",
+      "whenLocal": "2026-12-01 10:00 CET 起至 2026-12-14 17:00 CET（Europe/Cologne；部门页 Timed Auction）",
+      "city": "科隆 / 线上",
+      "summary": "亚洲艺术线上场（Asian Arts Online）；是否以中国瓷器为主待图录核实",
+      "period": "",
+      "lotSpan": "图录尚未公布（部门页写 Catalogue Coming soon...）",
+      "url": "https://www.lempertz.com/en/asian-art.html",
+      "houseUrl": "https://www.lempertz.com/en/asian-art.html",
+      "note": "【较11/26新增】11/26仅在扫描备注中写“Online 12/1–14 详情待公布”。今日部门页已给出官方时刻：1 Dec 10:00 am–14 Dec 5:00 pm，Catalogue Coming soon。亚洲工艺综合线上场，非已确认的纯瓷器专场。无独立专场直链，链接用部门页。",
+      "price": {
+        "kind": "unverified",
+        "text": "图录未上线，未见起拍价/估价",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": null,
+      "lots": []
+    },
+    {
+      "id": "sothebys-3",
+      "houseId": "sothebys",
+      "status": "upcoming",
+      "title": "Asian Art / 5000 Years",
+      "whenShanghai": "2026-12-03 18:00 起可出价；结标约 2026-12-15 19:00 起（逐件错峰，以官网为准）",
+      "whenLocal": "2026-12-03 11:00 CET 起可出价（acceptsBids 2026-12-03T10:00Z）；starts to close 2026-12-15 12:00 CET / 2026-12-15T11:00Z（Europe/Paris）",
+      "city": "巴黎 / 线上",
+      "summary": "亚洲艺术线上场（中国与日本等）；2026-11-28 专场页仍未见逐件图录",
+      "period": "",
+      "lotSpan": "图录尚未公布（官网 totalLotCount=0，与11/26同）",
+      "url": "https://www.sothebys.com/en/buy/auction/2026/asian-art-5000-years-pf2697",
+      "houseUrl": "https://www.sothebys.com/en/departments/chinese-works-of-art",
+      "note": "【较11/26更新】官方 TimedAuctionDates 今日已可核到精确开收标时刻（此前部门页笼统写 3–15 Dec 12:00 PM CET；第三方“约12/10结标”说法与官方不符）。图录仍未上线。预展信息11/26记为12/5–9巴黎，今日未在专场摘要中重新展开。跟拍以官网为准。",
+      "price": {
+        "kind": "unverified",
+        "text": "未公开起拍价；图录未上线，未见估价",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": "images/2026-11-28/sothebys-3/cover.jpg",
+      "lots": []
+    },
+    {
+      "id": "aguttes-4",
+      "houseId": "aguttes",
+      "status": "upcoming",
+      "title": "Arts d'Asie",
+      "whenShanghai": "2026-12-04 20:30（按今日官网专场页 13:30 CET；见备注中的时刻歧义）",
+      "whenLocal": "官网专场页：2026-12-04 13:30 CET，Aguttes Neuilly；同时官方新闻稿写 Friday, December 4, at 2:30 p.m.（即14:30）。预展：12/2–3 10:00–17:30，12/4 10:00–12:00。",
+      "city": "讷伊（Neuilly-sur-Seine，164 bis avenue Charles de Gaulle）",
+      "summary": "亚洲艺术综合场（含越南及中国工艺）；主推乾隆海棠式洋彩红地轧道瓶（故宫博物院台北有成对传世器，纪年约乾隆六年/1741）",
+      "period": "清乾隆等",
+      "lotSpan": "专场页显示 158 件（1 à 24 entrées sur 158）；乾隆洋彩瓶拍品号今日仍未从目录列表稳定读到",
+      "url": "https://www.aguttes.com/catalogue/arts-dasie-a30c46ac-42da-4a41-81ec-9b424b630084",
+      "houseUrl": "https://www.aguttes.com/",
+      "note": "【较11/26更新】11/26记为14:30 CET。今日官方专场页标题为 4 décembre 2026 à 13:30，但同站新闻稿《Qianlong Imperial Vase: An Exceptional Discovery》仍写 2:30 p.m.。二者冲突，跟拍请再核开拍当天官网。估价已改由官方新闻稿复核（Gazette 专文今日 403）。拍品号仍缺。亚洲综合场，非纯瓷器专场。新闻稿：https://www.aguttes.com/en/actualite/vase-imperial-qianlong-decouverte-vente-encheres",
+      "price": {
+        "kind": "estimate",
+        "currency": "EUR",
+        "low": 100000,
+        "high": 150000,
+        "text": "乾隆洋彩海棠式瓶估价 EUR 100,000–150,000（Aguttes 官方新闻稿 2026-11-28 复核）；目录首页可见其他中国瓷估价多约 EUR 80–5,000 量级"
+      },
+      "cover": "images/2026-11-28/aguttes-4/cover.jpg",
+      "lots": [
+        {
+          "lot": "",
+          "title": "乾隆海棠式洋彩红地轧道瓶（与台北故宫传世器成对；新闻稿称故宫器纪年乾隆六年/1741）",
+          "keywords": "清乾隆",
+          "period": "清乾隆",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 100000,
+            "high": 150000,
+            "text": "估价 EUR 100,000–150,000"
+          },
+          "url": "https://www.aguttes.com/en/actualite/vase-imperial-qianlong-decouverte-vente-encheres",
+          "image": null,
+          "imageNote": "这次没有取到这件的图片"
+        }
+      ]
+    },
+    {
+      "id": "bonhams-5",
+      "houseId": "bonhams",
+      "status": "upcoming",
+      "title": "Asian Art Online（巴黎线上）",
+      "whenShanghai": "2026-12-04 19:00 起可出价；结标约 2026-12-11 19:00（以官网为准）",
+      "whenLocal": "2026-12-04 12:00 CET 起至 2026-12-11 12:00 CET（accepts/end 均为 11:00Z；Europe/Paris）；预展巴黎 Avenue Hoche 12/5–9",
+      "city": "巴黎 / 线上（Avenue Hoche）",
+      "summary": "巴黎亚洲艺术季线上配套场，含中国陶瓷（汉绿釉、宋元釉陶、康熙五彩、道光粉彩等）及印度喜马拉雅、家具等",
+      "period": "汉–清及亚洲其他地区",
+      "lotSpan": "共128件（官网 number_of_lots / 列表已核，拍品号约 201–328）",
+      "url": "https://www.bonhams.com/auction/31820/asian-art-online/",
+      "houseUrl": "https://www.bonhams.com/department/ORI-CHI/chinese-ceramics-and-works-of-art/",
+      "note": "【较11/26更新】11/26图录未出；今日官网图录已上线（128件，状态 READY，页面仍标 Coming soon，因 12/4 才开拍）。同期「中国鼻烟壶专藏」（Gayle Gray Laverlochère，4–11 Dec，约67件）非瓷器专场，未单列。亚洲综合线上场，非纯瓷器专场。",
+      "price": {
+        "kind": "estimate",
+        "currency": "EUR",
+        "low": 200,
+        "high": 8000,
+        "text": "全场约 EUR 200–8,000；瓷器例：Lot 302 康熙款五彩杯 EUR 6,000–8,000；Lot 227 汉绿釉瓶一对 EUR 6,000–8,000（均为估价）"
+      },
+      "cover": "images/2026-11-28/bonhams-5/cover.jpg",
+      "lots": [
+        {
+          "lot": "302",
+          "title": "五彩杯（款识，可能为康熙）",
+          "keywords": "清康熙（款，官网作 probably Kangxi）",
+          "period": "清康熙（款，官网作 probably Kangxi）",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 EUR 6,000–8,000"
+          },
+          "url": "https://www.bonhams.com/auction/31820/lot/302/coupe-en-porcelaine-de-la-famille-verte-marque-et-probablement-epoque-kangxi-1662-1722/",
+          "image": "images/2026-11-28/bonhams-5/lot-302.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "303",
+          "title": "粉彩碗一对（道光款）",
+          "keywords": "清道光",
+          "period": "清道光",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 1500,
+            "high": 2000,
+            "text": "估价 EUR 1,500–2,000"
+          },
+          "url": "https://www.bonhams.com/auction/31820/lot/303/paire-de-bols-en-porcelaine-de-la-famille-rose-marques-et-epoque-daoguang-1821-1850-2/",
+          "image": "images/2026-11-28/bonhams-5/lot-303.jpg",
+          "imageNote": ""
+        }
+      ]
+    },
+    {
+      "id": "elmridge-6",
+      "houseId": "elmridge",
+      "status": "upcoming",
+      "title": "Fine Asian Antiques & Asian Art Sale",
+      "whenShanghai": "2026-12-05（美国纽约；具体钟点今日未能从目录页核到）",
+      "whenLocal": "Dec 5, 2026（NY, USA；钟点以平台为准，本次目录页未完整打开）",
+      "city": "纽约州 / 线上（经 LiveAuctioneers）",
+      "summary": "亚洲古董与艺术品场，检索摘要可见青花、粉彩、茶叶末及雍正款斗彩等中国瓷",
+      "period": "",
+      "lotSpan": "目录页今日未完整打开，拍品号未核",
+      "url": "https://www.liveauctioneers.com/catalog/438918_fine-asian-antiques-and-asian-art-sale/",
+      "houseUrl": "https://www.liveauctioneers.com/",
+      "note": "2026-11-28：LiveAuctioneers 目录页返回约1 KB挑战页，未能逐件复核。日期来自平台公开目录标题（与11/26一致）。中小行，品质需自辨。",
+      "price": {
+        "kind": "unverified",
+        "text": "目录页未完整打开，未见起拍价/估价",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": "images/2026-11-28/elmridge-6/cover.jpg",
+      "lots": []
+    },
+    {
+      "id": "ueluxe-7",
+      "houseId": "ueluxe",
+      "status": "upcoming",
+      "title": "Chinese Antiques (Furniture & Fine Arts)",
+      "whenShanghai": "2026-12-07（美国怀俄明；具体钟点今日未能从目录页核到）",
+      "whenLocal": "Dec 7, 2026（WY, USA；钟点以平台为准，本次目录页未完整打开）",
+      "city": "怀俄明 / 线上（经 LiveAuctioneers）",
+      "summary": "中国古董家具与工艺场，检索摘要可见粉彩及风景瓷等",
+      "period": "",
+      "lotSpan": "目录页今日未完整打开，拍品号未核",
+      "url": "https://www.liveauctioneers.com/catalog/437369_chinese-antiques-furniture-and-fine-arts/",
+      "houseUrl": "https://www.liveauctioneers.com/",
+      "note": "2026-11-28：LA 目录页被拦，日期与11/26一致（平台公开目录标题）。中小行，品质需自辨。",
+      "price": {
+        "kind": "unverified",
+        "text": "目录页未完整打开，未见起拍价/估价",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": "images/2026-11-28/ueluxe-7/cover.jpg",
+      "lots": []
+    },
+    {
+      "id": "bonhams-8",
+      "houseId": "bonhams",
+      "status": "upcoming",
+      "title": "Crosscurrents: Asian Works of Art and Paintings Online",
+      "whenShanghai": "2026-12-08 01:00 起可出价；结标约 2026-12-17 01:00（以官网为准）",
+      "whenLocal": "2026-12-07 09:00 PST 起至 2026-12-16 09:00 PST（start/end 均为 17:00Z；America/Los_Angeles）",
+      "city": "洛杉矶 / 线上",
+      "summary": "亚洲工艺与绘画线上场；相关部门含中国陶瓷与工艺",
+      "period": "",
+      "lotSpan": "图录尚未公布（官网 number_of_lots=0，sSaleStatus=NEW）",
+      "url": "https://www.bonhams.com/auction/32175/crosscurrents-asian-works-of-art-and-paintings-online/",
+      "houseUrl": "https://www.bonhams.com/department/ORI-CHI/chinese-ceramics-and-works-of-art/",
+      "note": "【较11/26更新】今日官方 dates 已给出开收标精确时刻（11/26仅有 7–16 Dec 区间）。图录仍未上线。是否以中国瓷器为主待图录核实。亚洲综合线上场，非纯瓷器专场。",
+      "price": {
+        "kind": "unverified",
+        "text": "图录未发布，未见起拍价/估价",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": null,
+      "lots": []
+    },
+    {
+      "id": "nagel-9",
+      "houseId": "nagel",
+      "status": "upcoming",
+      "title": "Fine Asian Art – China II 等（Auction 850）",
+      "whenShanghai": "2026-12-08 16:30 起（中国段首日）；次日场次以官网为准",
+      "whenLocal": "2026-12-08 09:30 CET Stuttgart（China II 图录：Lot 1–464 | 09:30 am）；预展 12/5–7 10–17 Uhr",
+      "city": "斯图加特",
+      "summary": "中国工艺专场段，含乾隆款松石绿地粉彩（仿掐丝珐琅效果）龙耳大瓶等",
+      "period": "以明清官窑及高古为主",
+      "lotSpan": "China II 图录 Lot 1–464（PDF 已核）",
+      "url": "https://www.auction.de/en/850-fine-asian-art-highlights/",
+      "houseUrl": "https://www.auction.de/",
+      "note": "2026-11-28 复核：亮点页仍有该瓶照片但未写估价；今日重新下载官方 PDF https://www.auction.de/download/850_China_2.pdf，Lot 374 估价与11/26一致。PDF 亦写 Auction: 8. December 2026。",
+      "price": {
+        "kind": "estimate",
+        "currency": "EUR",
+        "low": 100000,
+        "high": 150000,
+        "text": "Lot 374 乾隆款松石绿地粉彩龙耳大瓶（高51 cm）估价 EUR 100,000–150,000（China II PDF：€ 100000,-/150000,-）"
+      },
+      "cover": "images/2026-11-28/nagel-9/highlight-1.jpg",
+      "lots": [
+        {
+          "lot": "374",
+          "title": "乾隆款松石绿地粉彩（仿掐丝珐琅效果）龙耳大瓶，高51 cm",
+          "keywords": "清乾隆款",
+          "period": "清乾隆款",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 100000,
+            "high": 150000,
+            "text": "估价 EUR 100,000–150,000"
+          },
+          "url": "https://www.auction.de/download/850_China_2.pdf",
+          "image": "images/2026-11-28/nagel-9/highlight-1.jpg",
+          "imageNote": ""
+        }
+      ]
+    },
+    {
+      "id": "koller-10",
+      "houseId": "koller",
+      "status": "upcoming",
+      "title": "Asian Art: Himalaya, China (A219AS)",
+      "whenShanghai": "2026-12-08 18:00",
+      "whenLocal": "2026-12-08 11:00 CET（Europe/Zurich）；Invaluable 交叉页写 December 8, 2026 at 11:00 AM CET",
+      "city": "苏黎世",
+      "summary": "喜马拉雅与中国亚洲艺术场，预期含中国瓷器",
+      "period": "",
+      "lotSpan": "逐件图录今日未能从官方页完整抓取（官方页仅返回极短页面）",
+      "url": "https://www.kollerauktionen.ch/en/zuerich/a219as/asian-art_-himalaya_-china-2/",
+      "houseUrl": "https://www.kollerauktionen.ch/en/zuerich/a219as/asian-art_-himalaya_-china-2/",
+      "note": "2026-11-28：官方专场页仅约 2.5 KB，疑反爬；时刻经 Invaluable 目录交叉复核仍为 11:00 CET（https://www.invaluable.com/catalog/hkppkzzp29）。瓷器逐件未完整抓取。亚洲综合场，非纯瓷器专场。",
+      "price": {
+        "kind": "unverified",
+        "text": "官方页今日反爬，未见起拍价；Invaluable 目录页已开但本次未稳定抓取逐件估价",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": null,
+      "lots": []
+    },
+    {
+      "id": "tessier-11",
+      "houseId": "tessier",
+      "status": "upcoming",
+      "title": "Arts d'Asie",
+      "whenShanghai": "2026-12-08 21:00",
+      "whenLocal": "2026-12-08 14:00 CET（专场页：mardi 08 décembre 2026 14:00 / MARDI 8 DÉCEMBRE 2026 à 14h）",
+      "city": "巴黎 Drouot 15厅",
+      "summary": "亚洲艺术专场",
+      "period": "",
+      "lotSpan": "官方专场页未见完整逐件价",
+      "url": "https://www.tessier-sarrou.com/vente/182134-arts-dasie",
+      "houseUrl": "https://www.tessier-sarrou.com/specialite/art-asie",
+      "note": "2026-11-28 官方专场页已复核，时刻与11/26一致。无逐件价。亚洲综合场，非纯瓷器专场。",
+      "price": {
+        "kind": "unverified",
+        "text": "官方专场页未见起拍价/逐件估价",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": null,
+      "lots": []
+    },
+    {
+      "id": "sothebys-12",
+      "houseId": "sothebys",
+      "status": "upcoming",
+      "title": "Treasures | London（含中国瓷器精品）",
+      "whenShanghai": "2026-12-09 00:00",
+      "whenLocal": "2026-12-08 16:00 GMT（goesLive 2026-12-08T16:00Z；Europe/London）",
+      "city": "伦敦",
+      "summary": "雍正粉彩八方盖瓶一对；康熙五彩纹章盖瓶一对等",
+      "period": "清康熙 / 雍正等",
+      "lotSpan": "全场25件（与11/26一致）；中国瓷器主推为 Lot 4、Lot 7（今日补核拍品号）",
+      "url": "https://www.sothebys.com/en/buy/auction/2026/treasures-london-l26303",
+      "houseUrl": "https://www.sothebys.com/en/departments/chinese-works-of-art",
+      "note": "【较11/26更新】拍品号今日由 GraphQL 补全（Lot 4 康熙五彩纹章盖瓶，Lot 7 雍正粉彩八方盖瓶）；估价与时刻维持原状。奢侈艺术综合场，非纯瓷器专场；仅列中国瓷器相关拍品。",
+      "price": {
+        "kind": "estimate",
+        "currency": "GBP",
+        "low": 80000,
+        "high": 120000,
+        "text": "Lot 7 粉彩八方盖瓶 GBP 80,000–120,000；Lot 4 五彩纹章盖瓶 GBP 100,000–150,000（估价，GraphQL 复核无变更）"
+      },
+      "cover": "images/2026-11-28/sothebys-12/lot-007.jpg",
+      "lots": [
+        {
+          "lot": "7",
+          "title": "A pair of famille-rose octagonal baluster jars and covers",
+          "keywords": "清雍正",
+          "period": "清雍正",
+          "price": {
+            "kind": "estimate",
+            "currency": "GBP",
+            "low": 80000,
+            "high": 120000,
+            "text": "估价 GBP 80,000–120,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/treasures-london-l26303/a-pair-of-famille-rose-octagonal-baluster-jars-and",
+          "image": "images/2026-11-28/sothebys-12/lot-007.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "4",
+          "title": "A pair of famille-verte ‘Teles da Silva’ armorial vases and covers",
+          "keywords": "清康熙约1700–1720",
+          "period": "清康熙约1700–1720",
+          "price": {
+            "kind": "estimate",
+            "currency": "GBP",
+            "low": 100000,
+            "high": 150000,
+            "text": "估价 GBP 100,000–150,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/treasures-london-l26303/a-pair-of-famille-verte-teles-da-silva-armorial",
+          "image": "images/2026-11-28/sothebys-12/lot-004.jpg",
+          "imageNote": ""
+        }
+      ]
+    },
+    {
+      "id": "liveauctioneers-13",
+      "houseId": "liveauctioneers",
+      "status": "upcoming",
+      "title": "Asian Dynasties: Timeless Antiquities & Jewels",
+      "whenShanghai": "2026-12-09（美国加州；具体钟点今日未能从目录页核到）",
+      "whenLocal": "Dec 9, 2026（CA, USA；钟点以平台为准，本次目录页未完整打开）",
+      "city": "加州 / 线上（经 LiveAuctioneers）",
+      "summary": "亚洲古董与珠宝综合场；检索摘要称含青花、粉彩、青瓷等中国瓷，但未打开目录，不能逐件确认",
+      "period": "",
+      "lotSpan": "目录页今日未完整打开，拍品号未核",
+      "url": "https://www.liveauctioneers.com/catalog/440001_asian-dynasties-timeless-antiquities-and-jewels/",
+      "houseUrl": "https://www.liveauctioneers.com/",
+      "note": "【较11/26新增】平台公开目录标题给出 2026-12-09。今日 LA 目录页被拦，无逐件核验。中小行，品质需自辨；非已确认的纯瓷器专场。",
+      "price": {
+        "kind": "unverified",
+        "text": "目录页未完整打开，未见起拍价/估价",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": "images/2026-11-28/liveauctioneers-13/cover.jpg",
+      "lots": []
+    },
+    {
+      "id": "christies-14",
+      "houseId": "christies",
+      "status": "upcoming",
+      "title": "Art d'Asie",
+      "whenShanghai": "2026-12-09 17:00",
+      "whenLocal": "2026-12-09 10:00 CET（Europe/Paris），Lots 1–111（专场页 sessions：09 Dec 10:00 AM CET）",
+      "city": "巴黎 Avenue Matignon（9 Avenue Matignon）",
+      "summary": "巴黎亚洲艺术综合场：中国书画、高古与明清瓷器、漆器、玉器及日本、喜马拉雅等",
+      "period": "唐–清及亚洲其他地区",
+      "lotSpan": "共111件（Browse lots 111，今日已打开完整图录）",
+      "url": "https://www.christies.com/auction/auction-24619-par",
+      "houseUrl": "https://www.christies.com/en/departments/chinese-ceramics-and-works-of-art",
+      "note": "【较11/26更新】11/26仅从精选页读到两件主推瓷且无拍品号；今日官方图录已完整上线111件，拍品号与估价已核。部门页仍列出 Blaquier-Arrieta Part II（12/2 伦敦，非中国瓷，不列入）及港拍约2027-04。亚洲综合场，非纯瓷器专场。",
+      "price": {
+        "kind": "estimate",
+        "currency": "EUR",
+        "low": 30000,
+        "high": 50000,
+        "text": "例：Lot 58 乾隆款青花缠枝莲八吉祥壶 EUR 30,000–50,000；Lot 59 道光款松石绿地粉彩象耳大瓶 EUR 60,000–80,000；Lot 56 雍正粉彩盖罐一对 EUR 40,000–60,000（均为估价）"
+      },
+      "cover": "images/2026-11-28/christies-14/cover.jpg",
+      "lots": [
+        {
+          "lot": "58",
+          "title": "乾隆仿古款青花缠枝莲八吉祥瓶（壶/hu）",
+          "keywords": "清乾隆款",
+          "period": "清乾隆款",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 30000,
+            "high": 50000,
+            "text": "估价 EUR 30,000–50,000"
+          },
+          "url": "https://www.christies.com/en/lot/lot-6623028",
+          "image": null,
+          "imageNote": "这次没有取到这件的图片"
+        },
+        {
+          "lot": "59",
+          "title": "道光松石绿地粉彩象耳大瓶（官方短标题为松石蓝地粉彩瓶；专场介绍明确 elephant-head handles）",
+          "keywords": "清道光款识",
+          "period": "清道光款识",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 60000,
+            "high": 80000,
+            "text": "估价 EUR 60,000–80,000"
+          },
+          "url": "https://www.christies.com/en/lot/lot-6623029",
+          "image": null,
+          "imageNote": "这次没有取到这件的图片"
+        },
+        {
+          "lot": "56",
+          "title": "雍正粉彩盖罐一对",
+          "keywords": "清雍正",
+          "period": "清雍正",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 40000,
+            "high": 60000,
+            "text": "估价 EUR 40,000–60,000"
+          },
+          "url": "https://www.christies.com/en/lot/lot-6623026",
+          "image": null,
+          "imageNote": "这次没有取到这件的图片"
+        }
+      ]
+    },
+    {
+      "id": "artcurial-15",
+      "houseId": "artcurial",
+      "status": "upcoming",
+      "title": "Asian Art",
+      "whenShanghai": "2026-12-09 21:30",
+      "whenLocal": "2026-12-09 14:30 CET（Invaluable：December 9, 2026 at 2:30 PM CET • Paris；标题亦写 1:30 PM UTC，与 CET+1 一致）",
+      "city": "巴黎（7, rond-point des Champs-Élysées）",
+      "summary": "亚洲艺术综合场，含青白、龙泉、青花、五彩、粉彩等中国瓷",
+      "period": "宋–清等",
+      "lotSpan": "Invaluable 目录写 301 items；瓷器多集中在前列（Lot 1–30 等）",
+      "url": "https://www.invaluable.com/catalog/eab46yi3pe",
+      "houseUrl": "https://www.artcurial.com/en/specialties/asian-art",
+      "note": "【较11/26更新】Gazette Drouot 图录页今日 403，改以 Invaluable 官方对接目录复核 Lot 1/7/22/23 估价，与11/26一致。时刻仍为 14:30 CET。官网专科页可开但未见更完整逐件列表。亚洲综合场，非纯瓷器专场。",
+      "price": {
+        "kind": "estimate",
+        "currency": "EUR",
+        "low": 80,
+        "high": 6000,
+        "text": "已见瓷器估价约 EUR 80–6,000（低端组货至龙泉盘等）；例：Lot 7 龙泉青釉盘三件 EUR 4,000–6,000（估价）"
+      },
+      "cover": "images/2026-11-28/artcurial-15/cover.jpg",
+      "lots": [
+        {
+          "lot": "7",
+          "title": "龙泉青釉双鱼纹盘三件",
+          "keywords": "13/14世纪",
+          "period": "13/14世纪",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 4000,
+            "high": 6000,
+            "text": "估价 EUR 4,000–6,000"
+          },
+          "url": "https://www.invaluable.com/catalog/eab46yi3pe",
+          "image": null,
+          "imageNote": "这次没有取到这件的图片"
+        },
+        {
+          "lot": "1",
+          "title": "青白褐斑瓷器一组（葫芦执壶等）",
+          "keywords": "14世纪",
+          "period": "14世纪",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 1500,
+            "high": 2000,
+            "text": "估价 EUR 1,500–2,000"
+          },
+          "url": "https://www.invaluable.com/catalog/eab46yi3pe",
+          "image": null,
+          "imageNote": "这次没有取到这件的图片"
+        },
+        {
+          "lot": "22",
+          "title": "康熙青花盖罐（瑞兽耳）",
+          "keywords": "清康熙",
+          "period": "清康熙",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 1500,
+            "high": 2000,
+            "text": "估价 EUR 1,500–2,000"
+          },
+          "url": "https://www.invaluable.com/catalog/eab46yi3pe",
+          "image": null,
+          "imageNote": "这次没有取到这件的图片"
+        },
+        {
+          "lot": "23",
+          "title": "康熙五彩执壶（银器式）",
+          "keywords": "清康熙",
+          "period": "清康熙",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 2000,
+            "high": 3000,
+            "text": "估价 EUR 2,000–3,000"
+          },
+          "url": "https://www.invaluable.com/catalog/eab46yi3pe",
+          "image": null,
+          "imageNote": "这次没有取到这件的图片"
+        }
+      ]
+    },
+    {
+      "id": "millon-16",
+      "houseId": "millon",
+      "status": "upcoming",
+      "title": "Arts d'Asie – Extrême-Orient",
+      "whenShanghai": "2026-12-10 17:00",
+      "whenLocal": "2026-12-10 10:00 CET（专场页：jeu 10 déc 10H00 PARIS Salle Millon Drouot）",
+      "city": "巴黎 Salle Millon Drouot（3 rue Rossini）",
+      "summary": "亚洲艺术场：青铜、瓷器、玉、珊瑚、绘画与家具等，含 Colonel Marcel Klepper（1882–1944）旧藏",
+      "period": "",
+      "lotSpan": "逐件估价未完整抓到",
+      "url": "https://www.millon.com/catalogue/vente4539-arts-dasie",
+      "houseUrl": "https://www.millon.com/en/our-specialities/asian-art",
+      "note": "2026-11-28 专场页已复核时刻仍为 10:00 CET。页内联络说明曾写“请注明 vente 4157”，与 URL vente4539 编号不一致，跟拍以本专场 URL 为准。预展 12/4 及 12/7–9 11:00–18:00。亚洲综合场，非纯瓷器专场。",
+      "price": {
+        "kind": "unverified",
+        "text": "专场页未见起拍价/完整逐件估价",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": "images/2026-11-28/millon-16/cover.jpg",
+      "lots": []
+    },
+    {
+      "id": "bonhams-17",
+      "houseId": "bonhams",
+      "status": "upcoming",
+      "title": "Asian Art",
+      "whenShanghai": "2026-12-10 21:00",
+      "whenLocal": "2026-12-10 14:00 CET（start 2026-12-10T13:00:00+00:00，timezone CET）",
+      "city": "巴黎 Avenue Hoche",
+      "summary": "巴黎亚洲艺术现场场，含宋元陶瓷、明清瓷器及玉、纺织等",
+      "period": "宋–清及亚洲其他",
+      "lotSpan": "共99件（官网 number_of_lots 已复核，拍品号约 101–199）",
+      "url": "https://www.bonhams.com/auction/31819/asian-art/",
+      "houseUrl": "https://www.bonhams.com/department/ORI-CHI/chinese-ceramics-and-works-of-art/",
+      "note": "2026-11-28 复核：99件、14:00 CET 及既有瓷器亮点估价均无变更。Lot 110 今日补到官方拍品直链。同期 Gisèle Croës: A Legacy（12/10）及鼻烟壶线上场未作为瓷器专场单列。亚洲综合场，非纯瓷器专场。",
+      "price": {
+        "kind": "estimate",
+        "currency": "EUR",
+        "low": 600,
+        "high": 70000,
+        "text": "场次估价跨度约 EUR 600–70,000；例：乾隆炉钧釉瓶（Lot 176）EUR 10,000–15,000；重要磁州窑瓶（Lot 110）EUR 20,000–30,000（估价，今日逐件复核无变更）"
+      },
+      "cover": "images/2026-11-28/bonhams-17/cover.jpg",
+      "lots": [
+        {
+          "lot": "176",
+          "title": "炉钧釉弦纹长颈瓶（乾隆款）",
+          "keywords": "清乾隆",
+          "period": "清乾隆",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 10000,
+            "high": 15000,
+            "text": "估价 EUR 10,000–15,000"
+          },
+          "url": "https://www.bonhams.com/auction/31819/lot/176/vase-bouteille-en-porcelaine-a-glacure-oeufs-de-rouge-gorge-marque-et-epoque-qianlong-1736-1795/",
+          "image": "images/2026-11-28/bonhams-17/lot-176.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "177",
+          "title": "粉彩九桃大瓶",
+          "keywords": "晚清/民国",
+          "period": "晚清/民国",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 5000,
+            "high": 8000,
+            "text": "估价 EUR 5,000–8,000"
+          },
+          "url": "https://www.bonhams.com/auction/31819/lot/177/grand-vase-en-porcelaine-de-la-famille-rose-fin-de-la-dynastie-qing-1644-1911-periode-republique/",
+          "image": "images/2026-11-28/bonhams-17/lot-177.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "180",
+          "title": "青花莲花八吉祥大盘",
+          "keywords": "晚清/民国",
+          "period": "晚清/民国",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 8000,
+            "high": 12000,
+            "text": "估价 EUR 8,000–12,000"
+          },
+          "url": "https://www.bonhams.com/auction/31819/lot/180/tres-grand-plat-en-porcelaine-bleu-blanc-fin-de-la-dynastie-qing-1644-1911-periode-republique/",
+          "image": "images/2026-11-28/bonhams-17/lot-180.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "182",
+          "title": "德化白釉蒜头瓶",
+          "keywords": "清十八世纪",
+          "period": "清十八世纪",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 1500,
+            "high": 2500,
+            "text": "估价 EUR 1,500–2,500"
+          },
+          "url": "https://www.bonhams.com/auction/31819/lot/182/vase-bouteille-en-porcelaine-blanc-de-chine-dynastie-qing-xviiie-siecle/",
+          "image": "images/2026-11-28/bonhams-17/lot-182.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "110",
+          "title": "重要磁州窑瓶",
+          "keywords": "北宋",
+          "period": "北宋",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 20000,
+            "high": 30000,
+            "text": "估价 EUR 20,000–30,000"
+          },
+          "url": "https://www.bonhams.com/auction/31819/lot/110/important-et-rare-vase-en-gres-cizhou-dynastie-des-song-du-nord-960-1126/",
+          "image": "images/2026-11-28/bonhams-17/lot-110.jpg",
+          "imageNote": ""
+        },
+        {
+          "lot": "161",
+          "title": "珊瑚红地留白花卉纹碗一对（道光款）",
+          "keywords": "清道光",
+          "period": "清道光",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 12000,
+            "high": 15000,
+            "text": "估价 EUR 12,000–15,000"
+          },
+          "url": "https://www.bonhams.com/auction/31819/lot/161/rare-paire-de-bols-en-porcelaine-a-decor-en-reserve-sur-fond-corail-marques-et-epoque-daoguang-1821-1850-4/",
+          "image": "images/2026-11-28/bonhams-17/lot-161.jpg",
+          "imageNote": ""
+        }
+      ]
+    },
+    {
+      "id": "sothebys-18",
+      "houseId": "sothebys",
+      "status": "upcoming",
+      "title": "Treasures | Paris（含中国瓷器）",
+      "whenShanghai": "2026-12-10 23:00",
+      "whenLocal": "2026-12-10 16:00 CET（goesLive 2026-12-10T15:00Z；Europe/Paris）",
+      "city": "巴黎",
+      "summary": "乾隆粉彩瓷瓶一对（镀金青铜座，座传 Benjamin Vulliamy）",
+      "period": "清乾隆（1736–1795）瓷；座稍后装配",
+      "lotSpan": "全场41件（【较11/26更新】11/26 GraphQL 为42件，今日为41件，缺 Lot 127）；确认含中国瓷：Lot 128",
+      "url": "https://www.sothebys.com/en/buy/auction/2026/treasures-paris-pf2692",
+      "houseUrl": "https://www.sothebys.com/en/departments/chinese-works-of-art",
+      "note": "【较11/26更新】全场件数由42减至41（Lot 126 之后跳至 128）。Lot 128 仍在，估价未变。综合奢侈艺术场，非纯瓷器专场。另有康熙款识描金漆屏等非瓷中国工艺，不在本瓷器表展开。",
+      "price": {
+        "kind": "estimate",
+        "currency": "EUR",
+        "low": 60000,
+        "high": 100000,
+        "text": "Lot 128 估价 EUR 60,000–100,000（今日复核无变更）"
+      },
+      "cover": "images/2026-11-28/sothebys-18/lot-128.jpg",
+      "lots": [
+        {
+          "lot": "128",
+          "title": "Paire de vases en porcelaine de Chine « famille rose » et bronze doré / 乾隆粉彩瓷瓶一对（镀金青铜座，座传 Vulliamy）",
+          "keywords": "清乾隆（1736–1795）瓷",
+          "period": "清乾隆（1736–1795）瓷",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 60000,
+            "high": 100000,
+            "text": "估价 EUR 60,000–100,000"
+          },
+          "url": "https://www.sothebys.com/en/buy/auction/2026/treasures-paris-pf2692/paire-de-vases-en-porcelaine-de-chine-famille-rose",
+          "image": "images/2026-11-28/sothebys-18/lot-128.jpg",
+          "imageNote": ""
+        }
+      ]
+    },
+    {
+      "id": "lempertz-19",
+      "houseId": "lempertz",
+      "status": "upcoming",
+      "title": "Asian Arts（Auction 1305）— China 专场段",
+      "whenShanghai": "2026-12-11 18:00",
+      "whenLocal": "2026-12-11 11:00 CET（部门页：Friday 11 December 2026 | 11 am Cologne）",
+      "city": "科隆",
+      "summary": "亚洲艺术现场场之中国段，含元龙泉青釉大盆、晚清珊瑚红描金瓶等",
+      "period": "元–清等",
+      "lotSpan": "全场 Lot 200–631；中国段 Lot 345–436（部门页已核）",
+      "url": "https://www.lempertz.com/en/catalogues/lot/1305-2/395-a-rare-and-large-celadon-basin-longquan-yuan-dynasty-1279-1368.html",
+      "houseUrl": "https://www.lempertz.com/en/asian-art.html",
+      "note": "2026-11-28 复核时刻与两件亮点估价无变更。部门页中国段仍为 Lot 345–436。非纯瓷器专场（同日还有印度/西藏/日本段）。另见本表 Auction 1308 线上场。",
+      "price": {
+        "kind": "estimate",
+        "currency": "EUR",
+        "low": 4000,
+        "high": 6000,
+        "text": "例：Lot 395 元龙泉青釉大盆 EUR 4,000–6,000；Lot 422 晚清珊瑚红描金瓶一对 EUR 6,000–8,000（估价，今日官方拍品页复核无变更）"
+      },
+      "cover": null,
+      "lots": [
+        {
+          "lot": "395",
+          "title": "A rare and large celadon basin, Longquan / 元龙泉青釉大盆（径35.8 cm）",
+          "keywords": "元龙泉",
+          "period": "元龙泉",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 4000,
+            "high": 6000,
+            "text": "估价 EUR 4,000–6,000"
+          },
+          "url": "https://www.lempertz.com/en/catalogues/lot/1305-2/395-a-rare-and-large-celadon-basin-longquan-yuan-dynasty-1279-1368.html",
+          "image": null,
+          "imageNote": "这次没有取到这件的图片"
+        },
+        {
+          "lot": "422",
+          "title": "A pair of gilt-decorated coral-ground vases / 晚清珊瑚红描金瓶一对（寄托乾隆款）",
+          "keywords": "晚清十九世纪",
+          "period": "晚清十九世纪",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 6000,
+            "high": 8000,
+            "text": "估价 EUR 6,000–8,000"
+          },
+          "url": "https://www.lempertz.com/en/catalogues/lot/1305-2/422-a-pair-of-gilt-decorated-coral-ground-vases-late-qing-dynasty-1644-1912-19th-century.html",
+          "image": null,
+          "imageNote": "这次没有取到这件的图片"
+        }
+      ]
+    },
+    {
+      "id": "thierry-de-maigret-20",
+      "houseId": "thierry-de-maigret",
+      "status": "upcoming",
+      "title": "Arts asiatiques et céramiques européennes",
+      "whenShanghai": "2026-12-11 20:30（亚洲/陶瓷段）；当日另有 18:00 的第一场段",
+      "whenLocal": "2026-12-11：11h CET（lots 1–60，非洲/前哥伦布/考古等）及 13h30 CET（lots 61–421，含欧洲陶瓷与亚洲艺术）；Drouot Salle 1",
+      "city": "巴黎 Drouot Salle 1",
+      "summary": "非洲、前哥伦布、考古、欧洲陶瓷与亚洲艺术混合场",
+      "period": "",
+      "lotSpan": "全场至 Lot 421；亚洲/陶瓷专家段约自 Lot 61 起（页内专家划分）",
+      "url": "https://www.thierrydemaigret.com/catalogue/182288-arts-asiatiques-et-ceramiques-europeennes",
+      "houseUrl": "https://www.thierrydemaigret.com/",
+      "note": "2026-11-28 复核：官方说明为两场段，亚洲/陶瓷在 13:30 CET（与11/26一致）。混合场，不是独立中国瓷器专场。逐件价未完整抓到。",
+      "price": {
+        "kind": "unverified",
+        "text": "专场页未见完整逐件估价/起拍价",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": null,
+      "lots": []
+    },
+    {
+      "id": "liveauctioneers-21",
+      "houseId": "liveauctioneers",
+      "status": "upcoming",
+      "title": "Legacy of the Orient: Fine Chinese Antiques",
+      "whenShanghai": "2026-12-11（美国加州；具体钟点今日未能从目录页核到）",
+      "whenLocal": "Dec 11, 2026（CA, USA；钟点以平台为准，本次目录页未完整打开）",
+      "city": "加州 / 线上（经 LiveAuctioneers）",
+      "summary": "中国古董场；检索摘要称含较高估价青花、粉彩、青瓷等，但未打开目录，不能逐件确认",
+      "period": "",
+      "lotSpan": "目录页今日未完整打开，拍品号未核",
+      "url": "https://www.liveauctioneers.com/catalog/440015_legacy-of-the-orient-fine-chinese-antiques/",
+      "houseUrl": "https://www.liveauctioneers.com/",
+      "note": "【较11/26新增】平台公开目录标题给出 2026-12-11。今日 LA 目录页被拦。中小行，品质需自辨。",
+      "price": {
+        "kind": "unverified",
+        "text": "目录页未完整打开，未见起拍价/估价",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": "images/2026-11-28/liveauctioneers-21/cover.jpg",
+      "lots": []
+    },
+    {
+      "id": "beaussant-lef-vre-associ-s-22",
+      "houseId": "beaussant-lef-vre-associ-s",
+      "status": "upcoming",
+      "title": "Succession Catherine Laudenbach II（含重要亚洲艺术收藏）",
+      "whenShanghai": "2026-12-11 21:00",
+      "whenLocal": "2026-12-11 14:00 CET（官方图录 PDF 封面/扉页：Le vendredi 11 décembre 2026 à 14 h；Drouot 拍品页 December 11 | 02:00 PM；专场页标题亦为 14:00。页内一段说明仍写 13H30，与图录不符，以 PDF/Drouot 为准）",
+      "city": "巴黎 Drouot Salles 5-6",
+      "summary": "遗产第二场：书画家具及重要亚洲艺术，含雍正黄地青花海棠式抱月瓶等",
+      "period": "明万历 / 清雍正 / 乾隆等",
+      "lotSpan": "图录 nos 440–654（PDF）；瓷器亮点含 Lot 475、482、483、489",
+      "url": "https://www.beaussantlefevre.com/vente/182481",
+      "houseUrl": "https://www.beaussantlefevre.com/",
+      "note": "【较11/26更新】今日下载官方图录 PDF 复核估价与 14:00 开拍（https://cdn.drouot.com/d/catalogue?path=92/182481/782-Complet_BL_11_12_2026.pdf）。Gazette 今日 403。遗产综合场，不是独立瓷器专场，但含高估价雍正官窑瓷。Lot 483 拍品页：https://drouot.com/en/l/36067875-china-yongzheng-period-1723-1735-large-four-lobed-gourd",
+      "price": {
+        "kind": "estimate",
+        "currency": "EUR",
+        "low": 800000,
+        "high": 1000000,
+        "text": "Lot 483 估价 EUR 800,000–1,000,000；Lot 475 万历百鹿罐 EUR 8,000–10,000；Lot 482 雍正粉红釉碗 EUR 8,000–12,000；Lot 489 乾隆窑变蒜头瓶 EUR 6,000–8,000（均为估价，今日官方 PDF 复核）"
+      },
+      "cover": null,
+      "lots": [
+        {
+          "lot": "483",
+          "title": "雍正黄地青花海棠式抱月瓶（高48.2 cm，六字篆书款）",
+          "keywords": "清雍正",
+          "period": "清雍正",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 800000,
+            "high": 1000000,
+            "text": "估价 EUR 800,000–1,000,000"
+          },
+          "url": "https://drouot.com/en/l/36067875-china-yongzheng-period-1723-1735-large-four-lobed-gourd",
+          "image": null,
+          "imageNote": "这次没有取到这件的图片"
+        },
+        {
+          "lot": "482",
+          "title": "雍正粉红釉碗（六字楷书款，口径12 cm）",
+          "keywords": "清雍正",
+          "period": "清雍正",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 8000,
+            "high": 12000,
+            "text": "估价 EUR 8,000–12,000"
+          },
+          "url": "https://cdn.drouot.com/d/catalogue?path=92/182481/782-Complet_BL_11_12_2026.pdf",
+          "image": null,
+          "imageNote": "这次没有取到这件的图片"
+        },
+        {
+          "lot": "475",
+          "title": "万历青花百鹿大罐（高70.5 cm）",
+          "keywords": "明万历",
+          "period": "明万历",
+          "price": {
+            "kind": "estimate",
+            "currency": "EUR",
+            "low": 8000,
+            "high": 10000,
+            "text": "估价 EUR 8,000–10,000"
+          },
+          "url": "https://cdn.drouot.com/d/catalogue?path=92/182481/782-Complet_BL_11_12_2026.pdf",
+          "image": null,
+          "imageNote": "这次没有取到这件的图片"
+        }
+      ]
+    },
+    {
+      "id": "zacke-23",
+      "houseId": "zacke",
+      "status": "upcoming",
+      "title": "Fine Asian Art Holiday Sale",
+      "whenShanghai": "2026-12-15 18:00",
+      "whenLocal": "2026-12-15 11:00 CET Vienna（沿用 11/26 经 Invaluable/LiveAuctioneers 已核时刻；今日官网与 LA 目录均未能完整打开）",
+      "city": "维也纳 / 线上",
+      "summary": "亚洲艺术节日场，含瓷器（非整场瓷器）",
+      "period": "",
+      "lotSpan": "11/26 经第三方见约 516 件；今日未能逐件复核",
+      "url": "https://www.liveauctioneers.com/catalog/439219_fine-asian-art-holiday-sale/",
+      "houseUrl": "https://www.zacke.at/cn/",
+      "note": "2026-11-28：官网 403；LA 目录页约 1 KB 挑战页。时刻与场次仍按 11/26 已核第三方目录保留，未能做逐件复核。亚洲综合场，非纯瓷器专场。",
+      "price": {
+        "kind": "estimate",
+        "currency": "EUR",
+        "low": 150,
+        "high": 5000,
+        "text": "11/26 示例估价跨度约 EUR 150–5,000+（非整场瓷器范围；今日未复核）"
+      },
+      "cover": "images/2026-11-28/zacke-23/cover.jpg",
+      "lots": []
+    },
+    {
+      "id": "mainichi-24",
+      "houseId": "mainichi",
+      "status": "upcoming",
+      "title": "Sale 871: Asian Antiques（预期含中国古瓷）",
+      "whenShanghai": "2026-12-18 12:00 起（第一日）；2026-12-19 10:00 起（第二日）",
+      "whenLocal": "Day 1 2026-12-18 13:00 JST；Day 2 2026-12-19 11:00 JST；预展 12/17–18 10:00–18:00 JST；书面投函截止 Day1 12/17 18:00 JST、Day2 12/18 18:00 JST",
+      "city": "东京 Mainichi Auction House",
+      "summary": "东京亚洲古董场，常出现中国古瓷",
+      "period": "",
+      "lotSpan": "图录尚未公布（日程页仍无 Browse all lots / Highlights）",
+      "url": "https://www.my-auction.co.jp/en/schedule/index",
+      "houseUrl": "https://www.my-auction.co.jp/en/schedule/index",
+      "note": "2026-11-28 官方英/日日程已复核，两日开拍时刻与11/26一致；图录仍未上线。日文场次名「第871回 古美術」。",
+      "price": {
+        "kind": "unverified",
+        "text": "图录尚未公布，未见起拍价/估价",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": "images/2026-11-28/mainichi-24/cover.jpg",
+      "lots": []
+    },
+    {
+      "id": "liveauctioneers-25",
+      "houseId": "liveauctioneers",
+      "status": "upcoming",
+      "title": "Imperial Elegance: Fine Chinese Art",
+      "whenShanghai": "2026-12-20（美国加州；具体钟点今日未能从目录页核到）",
+      "whenLocal": "Dec 20, 2026（CA, USA；钟点以平台为准，本次目录页未完整打开）",
+      "city": "加州 / 线上（经 LiveAuctioneers）",
+      "summary": "中国工艺场（平台目录标题）",
+      "period": "",
+      "lotSpan": "目录页今日未完整打开，拍品号未核",
+      "url": "https://www.liveauctioneers.com/catalog/439609_imperial-elegance-fine-chinese-art/",
+      "houseUrl": "https://www.liveauctioneers.com/",
+      "note": "2026-11-28：LA 目录页被拦，日期与11/26一致（平台公开目录标题）。中小行，品质需自辨。",
+      "price": {
+        "kind": "unverified",
+        "text": "目录页未完整打开，未见起拍价/估价",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": "images/2026-11-28/liveauctioneers-25/cover.jpg",
+      "lots": []
+    },
+    {
+      "id": "liveauctioneers-26",
+      "houseId": "liveauctioneers",
+      "status": "ended",
+      "title": "Chinese Antiques: Porcelain & Jade",
+      "whenShanghai": "2026-11-27（已结束；具体钟点仍未核到）",
+      "whenLocal": "Nov 27, 2026（平台目录标题；今日已过，具体开拍钟点仍未从目录页核到）",
+      "city": "经 LiveAuctioneers（平台标 AA）",
+      "summary": "中国古董：瓷器与玉器专场（平台目录标题）",
+      "period": "",
+      "lotSpan": "目录页今日未完整打开",
+      "url": "https://www.liveauctioneers.com/catalog/439339_chinese-antiques-porcelain-and-jade/",
+      "houseUrl": "https://www.liveauctioneers.com/",
+      "note": "【较11/26更新】11/26列为即将举行（11/27）。今日已是 11/28，平台公开目录仍标注 Auction on Nov 27, 2026，故改标刚结束。LA 目录页仍被拦，成交结果未核。中小行，品质需自辨。",
+      "price": {
+        "kind": "unknown",
+        "text": "已结束；目录页未完整打开，未见成交/估价数字",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": "images/2026-11-28/liveauctioneers-26/cover.jpg",
+      "lots": []
+    },
+    {
+      "id": "woolley-27",
+      "houseId": "woolley",
+      "status": "ended",
+      "title": "Fine Asian Art / Asian Art II 等（11月亚洲周）",
+      "whenShanghai": "2026-11-10～11（已结束）",
+      "whenLocal": "10–11 Nov 2026 | Salisbury",
+      "city": "索尔兹伯里",
+      "summary": "英国亚洲周中国及亚洲工艺专场",
+      "period": "",
+      "lotSpan": "",
+      "url": "https://www.woolleyandwallis.co.uk/departments/asian-art/",
+      "houseUrl": "https://www.woolleyandwallis.co.uk/departments/asian-art/",
+      "note": "2026-11-28 部门页可开；12月场次可见 Modern British Art、British Art Pottery & Studio Ceramics，未见新的中国瓷器/亚洲艺术专场。",
+      "price": {
+        "kind": "estimate",
+        "currency": "GBP",
+        "low": 40000,
+        "high": 60000,
+        "text": "例：道光粉彩盖罐一对估价曾约 GBP 40,000–60,000（预展信息，非本次新核）"
+      },
+      "cover": null,
+      "lots": []
+    },
+    {
+      "id": "dreweatts-28",
+      "houseId": "dreweatts",
+      "status": "ended",
+      "title": "Chinese Ceramics and Works of Art（含日印伊）",
+      "whenShanghai": "2026-11-11～12（已结束）",
+      "whenLocal": "11–12 Nov 2026",
+      "city": "纽伯里",
+      "summary": "中国陶瓷与工艺（含日印伊）",
+      "period": "",
+      "lotSpan": "",
+      "url": "https://www.dreweatts.com/news-videos/auction-results-chinese-ceramics-and-works-of-art-to-include-japanese-indian-and-islamic-art-14901-14902/",
+      "houseUrl": "https://dreweatts.com/departments/asian-art/",
+      "note": "2026-11-28 部门页可开；12/9 Objects of Distinction 仍非中国瓷器专场，未列入。未见新的12月中国瓷器专场。",
+      "price": {
+        "kind": "unknown",
+        "text": "总成交约 GBP 1.48m（含溢价新闻口径，非本次新核）",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": "images/2026-11-28/dreweatts-28/cover.jpg",
+      "lots": []
+    },
+    {
+      "id": "sworders-29",
+      "houseId": "sworders",
+      "status": "ended",
+      "title": "Asian and Islamic Art",
+      "whenShanghai": "2026-11-11～12（已结束）",
+      "whenLocal": "11–12 Nov 2026 | Stansted Mountfitchet",
+      "city": "埃塞克斯",
+      "summary": "含汉–宋等中国陶瓷",
+      "period": "",
+      "lotSpan": "两日场",
+      "url": "https://www.sworder.co.uk/",
+      "houseUrl": "https://www.sworder.co.uk/",
+      "note": "2026-11-28 官网即将页仍 202/短页面。检索未见12月新的中国瓷器专场。",
+      "price": {
+        "kind": "unknown",
+        "text": "已结束",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": null,
+      "lots": []
+    },
+    {
+      "id": "lyon-30",
+      "houseId": "lyon",
+      "status": "ended",
+      "title": "Fine Asian Works of Art",
+      "whenShanghai": "2026-11-06（已结束）",
+      "whenLocal": "6 Nov 2026 10:00 GMT | London",
+      "city": "伦敦",
+      "summary": "亚洲工艺专场",
+      "period": "",
+      "lotSpan": "Sale 926",
+      "url": "https://www.lyonandturnbull.com/auctions/asian-works-of-art-926",
+      "houseUrl": "https://www.lyonandturnbull.com/departments/asian-art",
+      "note": "2026-11-28：部门/拍卖历页仍 429。检索仍见 12/9 Islamic & Indian Art，非中国瓷器，未列入。",
+      "price": {
+        "kind": "unknown",
+        "text": "已结束",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": null,
+      "lots": []
+    },
+    {
+      "id": "chiswick-31",
+      "houseId": "chiswick",
+      "status": "ended",
+      "title": "Asian Art / Chinese Art",
+      "whenShanghai": "2026-11-04～05（已结束）",
+      "whenLocal": "4–5 Nov 2026 | London",
+      "city": "伦敦",
+      "summary": "含唐宋邢定青白龙泉等陶瓷",
+      "period": "唐–清",
+      "lotSpan": "Asian Art 一场约439件（第三方，非本次新核）",
+      "url": "https://www.chiswickauctions.co.uk/",
+      "houseUrl": "https://www.chiswickauctions.co.uk/",
+      "note": "2026-11-28 官网即将页仍 202/短页面。检索未见12月新的中国瓷器专场。",
+      "price": {
+        "kind": "unknown",
+        "text": "已结束",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": null,
+      "lots": []
+    },
+    {
+      "id": "roseberys-32",
+      "houseId": "roseberys",
+      "status": "ended",
+      "title": "Chinese, Japanese & Southeast Asian Art Parts I–II",
+      "whenShanghai": "2026-11-03～04（已结束）",
+      "whenLocal": "3–4 Nov 2026 | London",
+      "city": "伦敦",
+      "summary": "中国、日本及东南亚艺术",
+      "period": "",
+      "lotSpan": "",
+      "url": "https://www.roseberys.co.uk/departments/chinese-japanese-south-asian-art",
+      "houseUrl": "https://www.roseberys.co.uk/departments/chinese-japanese-south-asian-art",
+      "note": "2026-11-28 部门页可开，文案仍写每年5月与11月各一场；未见12月新的中国瓷器专场。即将拍卖子页曾 404/跳转。",
+      "price": {
+        "kind": "unknown",
+        "text": "已结束",
+        "currency": "",
+        "low": null,
+        "high": null
+      },
+      "cover": null,
+      "lots": []
+    }
+  ]
+}
